@@ -10,13 +10,9 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
         String[] ab = scanner.nextLine().split(" ");
-        int A = Integer.parseInt(ab[0]);
-        int B = Integer.parseInt(ab[1]);
-        System.out.print(calcalator(A,B));
-    }
-
-    private static int calcalator(int A, int B) {
-        return (A+B)*(A-B);
+        long A = Integer.parseInt(ab[0]);
+        long B = Integer.parseInt(ab[1]);
+        System.out.print((A+B)*(A-B));
     }
 }
 
