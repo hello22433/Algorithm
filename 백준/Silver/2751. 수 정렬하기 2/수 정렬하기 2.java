@@ -9,13 +9,13 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        Scanner scanner = new Scanner(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        int N = scanner.nextInt();
+        int N = Integer.parseInt(br.readLine());
 
         List<Integer> list = new ArrayList<>();
         for (int i = 0; i < N; i++) {
-            list.add(scanner.nextInt());
+            list.add(Integer.parseInt(br.readLine()));
         }
 
         list.sort((a,b) -> a-b);
