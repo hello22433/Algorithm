@@ -13,15 +13,15 @@ public class Main {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         int N = Integer.parseInt(br.readLine());
 
-        List<Integer> list = new ArrayList<>();
+        int[] arr = new int[N];
         for (int i = 0; i < N; i++) {
-            list.add(Integer.parseInt(br.readLine()));
+            arr[i] = Integer.parseInt(br.readLine());
         }
 
-        list.sort((a,b) -> a-b);
+        Arrays.sort(arr);
 
-        for (int i = 0; i < list.size(); i++) {
-            bw.write(list.get(i) + "\n");
+        for (int i = 0; i < arr.length; i++) {
+            bw.write(arr[i] + "\n");
         }
 
         bw.close();
