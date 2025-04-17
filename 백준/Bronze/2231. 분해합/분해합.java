@@ -5,8 +5,9 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int N = sc.nextInt();
+        int start = N - (9 * String.valueOf(N).length());
 
-        for (int i = 1; ; i++) {
+        for (int i = start; ; i++) {
             int iLength = String.valueOf(i).length();
             int hap = i;
             for (int j = 0; j < iLength; j++) {
