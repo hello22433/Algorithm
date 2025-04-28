@@ -18,11 +18,11 @@ public class Main {
             arr[i] = sc.nextInt();
         }
 
-        dfs(0, new LinkedList<>());
+        dfs(0, new ArrayList<>());
         System.out.println(max);
     }
 
-    private static void dfs(int count, LinkedList<Integer> list) {
+    private static void dfs(int count, ArrayList<Integer> list) {
         if (count == N) {
             max = Math.max(max, calculate(list));
             return;
@@ -30,7 +30,7 @@ public class Main {
 
 
         for (int i = 0; i < arr.length; i++) {
-            LinkedList<Integer> copyList = new LinkedList<>(list);
+            ArrayList<Integer> copyList = new ArrayList<>(list);
             if (!visited[i]) {
                 visited[i] = true;
                 copyList.add(arr[i]);
@@ -40,7 +40,7 @@ public class Main {
         }
     }
 
-    private static int calculate(LinkedList<Integer> list) {
+    private static int calculate(ArrayList<Integer> list) {
         int first = list.get(0);
         int second = list.get(1);
         int bucket = Math.abs(first - second);
