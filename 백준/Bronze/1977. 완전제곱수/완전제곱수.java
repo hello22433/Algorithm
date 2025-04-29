@@ -14,12 +14,10 @@ public class Main {
         int min = Integer.MAX_VALUE;
 
         for (int i = M; i <= N; i++) {
-            for (int j = 1; j <= i; j++) {
-                if (i / j == j && i % j == 0) {
-                    sum += i;
-                    min = Math.min(min, i);
-                    break;
-                }
+            int sqrt = (int) Math.sqrt(i);
+            if (sqrt * sqrt == i) {
+                sum += i;
+                min = Math.min(min, i);
             }
         }
 
