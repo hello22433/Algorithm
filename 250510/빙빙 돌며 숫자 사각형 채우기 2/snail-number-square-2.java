@@ -18,13 +18,12 @@ public class Main {
             int nx = x + dx[directionIdx];
             int ny = y + dy[directionIdx];
 
-            if (nx<0 || nx>=n || ny<0 || ny<=m || map[nx][ny] != 0) {
+            if (nx<0 || nx>=n || ny<0 || ny>=m || map[nx][ny] != 0) {
                 directionIdx = (directionIdx-1+4)%4;
             }
 
             x = x + dx[directionIdx];
             y = y + dy[directionIdx];
-            if (value == 24) break;
             map[x][y] = value;
             value++;
         }
