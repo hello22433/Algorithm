@@ -20,21 +20,21 @@ public class Main {
         // Please write your code here.
         direction = 'X';
         // K에 대해서 진행방향 구하기 
-        if (K/3 == 0) {
+        if (K/n == 0) {
             direction = 'D';
             x = 0;
-            y = K%3;
-        } else if (K/3 == 1) {
+            y = K%n;
+        } else if (K/n == 1) {
             direction = 'L';
-            x = K%3;
+            x = K%n;
             y = n-1;
-        } else if (K/3 == 2) {
+        } else if (K/n == 2) {
             direction = 'U';
             x = n-1;
-            y = n-1-K%3;
-        } else if (K/3 == 3) {
+            y = n-1-K%n;
+        } else if (K/n == 3) {
             direction = 'R';
-            x = n-1-K%3;
+            x = n-1-K%n;
             y = 0;
         } 
         // 진행방향에 따른 상호작용(인덱스지정) -> 
