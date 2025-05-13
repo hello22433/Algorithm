@@ -52,7 +52,7 @@ public class Main {
     }
 
     public static void endGame(int color, int resultI, int resultJ) {
-        if (color == 'B') {
+        if (color == 1) {
             System.out.println(1);
             System.out.print(resultI + " " + resultJ);
         } else {
