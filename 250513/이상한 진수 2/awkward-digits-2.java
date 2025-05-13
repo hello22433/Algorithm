@@ -10,6 +10,8 @@ public class Main {
             if (!changed && a.charAt(i)=='0') {
                 changed = true;
                 sb.append("1");
+            } else if (i == a.length()-1 && !changed) {
+                sb.append("0");
             } else {
                 sb.append(String.valueOf(a.charAt(i)));
             }
