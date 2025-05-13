@@ -36,11 +36,27 @@ public class Main {
                     }
                 }
 
-                // 대각선(가로줄, 세로줄) 탐색 i, j
+                // 대각선 오른쪽 아래(가로줄, 세로줄) 탐색 i, j
                 for (int k = 1; k < 5; k++) {
                     if (arr[i+k][j+k] != color) break;
                     if (k==4) {
                         endGame(color, i+2+1, j+2+1);
+                        return;
+                    }
+                }
+            }
+        }
+
+        for (int i = 0; i < 19-4; i++) {
+            for (int j = 18; j >= 4; j--) {
+                int color = arr[i][j];
+                if (color==0) continue;
+
+                // 대각선 왼쪽 아래(가로줄, 세로줄) 탐색 i, j
+                for (int k = 1; k < 5; k++) {
+                    if (arr[i+k][j-k] != color) break;
+                    if (k==4) {
+                        endGame(color, i+2+1, j-2+1);
                         return;
                     }
                 }
