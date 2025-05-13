@@ -1,17 +1,18 @@
 import java.util.Scanner;
 
 public class Main {
+    static int[][] arr;
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int[][] arr = new int[19][19];
+        arr = new int[19][19];
         for (int i = 0; i < 19; i++) {
             for (int j = 0; j < 19; j++) {
                 arr[i][j] = sc.nextInt();
             }
         }
         // Please write your code here.
-        // 가로줄 세로줄
-        for (int i = 0; i < 19-4; i++) {
+        for (int i = 0; i < 19; i++) {
             for (int j = 0; j < 19-4; j++) {
                 // 검1 흰2 노알0
                 int color = arr[i][j];
@@ -26,6 +27,14 @@ public class Main {
                         return;
                     }
                 }
+            }
+        }
+
+        for (int i = 0; i < 19-4; i++) {
+            for (int j = 0; j < 19; j++) {
+                // 검1 흰2 노알0
+                int color = arr[i][j];
+                if (color==0) continue;
 
                 // 세로(가로줄) 탐색 i
                 for (int k = 1; k < 5; k++) {
@@ -35,6 +44,15 @@ public class Main {
                         return;
                     }
                 }
+            }
+        }
+
+        // 가로줄 세로줄
+        for (int i = 0; i < 19-4; i++) {
+            for (int j = 0; j < 19-4; j++) {
+                // 검1 흰2 노알0
+                int color = arr[i][j];
+                if (color==0) continue;
 
                 // 대각선 오른쪽 아래(가로줄, 세로줄) 탐색 i, j
                 for (int k = 1; k < 5; k++) {
