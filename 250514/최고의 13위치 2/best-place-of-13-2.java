@@ -13,8 +13,10 @@ public class Main {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n-2; j++) {
                 for (int k = i; k < n; k++) {
+                    boolean jAfterButton = false;
                     for (int l = 0; l < n-2; l++) {
-                        if (k==i) {
+                        if (k==i && !jAfterButton) {
+                            jAfterButton = true;
                             l = j+3;
                             if (l >= n-2) {
                                 break;
