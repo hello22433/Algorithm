@@ -11,7 +11,7 @@ public class Main {
             char c = sc.next().charAt(0);
             people[i] = new Person(pos, c);
         }
-        int[] group = new int[101];
+        int[] group = new int[10001];
         for (int i = 0; i < n; i++) {
             Person p = people[i];
             if (p.c == 'G') {
@@ -22,7 +22,7 @@ public class Main {
         }
 
         int maxSum = Integer.MIN_VALUE;
-        for (int i = 1; i <= 101-(k+1); i++) {
+        for (int i = 1; i <= 10001-(k+1); i++) {
             int sum = 0;
             for (int j = i; j < i+k+1; j++) { // 차이가 1일때 뒤에 것도 세므로
                 sum += group[j];
