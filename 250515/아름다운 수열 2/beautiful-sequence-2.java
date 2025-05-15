@@ -7,19 +7,17 @@ public class Main {
         int[] A = new int[N];
         for (int i = 0; i < N; i++)
             A[i] = sc.nextInt();
-        // int[] B = new int[M];
-        Set<Integer> set = new HashSet<>();
+        List<Integer> list = new ArrayList<>();
         for (int i = 0; i < M; i++)
-            // B[i] = sc.nextInt();
-            set.add(sc.nextInt());
+            list.add(sc.nextInt());
         // Please write your code here.
         
         int count = 0;
         for (int i = 0; i <= N-M; i++) {
-            Set<Integer> setCopy = new HashSet<>(set);
+            List<Integer> listCopy = new ArrayList<>(list);
             for (int j = i; j < i+M; j++) {
-                if (setCopy.contains(A[j])) {
-                    setCopy.remove(A[j]);
+                if (listCopy.contains(A[j])) {
+                    listCopy.remove(Integer.valueOf(A[j]));
                 } else {
                     break;
                 }
