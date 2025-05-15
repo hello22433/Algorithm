@@ -17,9 +17,10 @@ public class Main {
         int[] line = new int[101];
         for (int i = 0; i < n; i++) {
             candyAndPosition candyInfo = candies[i];
-            line[candyInfo.position] = candyInfo.candies;
+            line[candyInfo.position] += candyInfo.candies;
         }
 
+        // c가 1이면 양쪽으로 하나씩 더 해야 한다.
         int maxSum = Integer.MIN_VALUE;
         for (int i = c; i <= 101-c-1; i++) {
             int sum = 0;
