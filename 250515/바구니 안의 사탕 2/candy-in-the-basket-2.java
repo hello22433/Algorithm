@@ -14,8 +14,8 @@ public class Main {
         }
 
         // 0~100
-        // 1~200 -> 0~200
-        int[] line = new int[201];
+        // 200일 경우 -> 0~400
+        int[] line = new int[401];
         for (int i = 0; i < n; i++) {
             candyAndPosition candyInfo = candies[i];
             line[candyInfo.position] += candyInfo.candies;
@@ -23,7 +23,7 @@ public class Main {
 
         // c가 1이면 양쪽으로 하나씩 더 해야 한다.
         int maxSum = Integer.MIN_VALUE;
-        for (int i = c; i <= 201-c-1; i++) {
+        for (int i = c; i <= 401-c-1; i++) {
             int sum = 0;
             for (int j = i-c; j <= i+c; j++) {
                 sum += line[j];
