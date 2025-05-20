@@ -26,13 +26,21 @@ public class Main {
         }
 
         int[] eatCheeseBeforeSicked = new int[M+1];
+        
         boolean[] sickedPeople = new boolean[N+1];
 
         for (int i = 0; i < S; i++) {
+            sickedPeople[sickedRecord[i][0]]  = true;
+            boolean[] DuplicatedCheckCheese = new boolean[M+1];
+            boolean[] DuplicatedCheckMen = new boolean[N+1];
             for (int j = 0; j < D; j++) {
                 if (eatRecord[j][0] == sickedRecord[i][0] && eatRecord[j][2] < sickedRecord[i][1]) {
-                    sickedPeople[sickedRecord[i][0]]  = true;
-                    eatCheeseBeforeSicked[eatRecord[j][1]] += 1;
+                    // 한 사람이 같은 치즈를 중복해서 먹을 경우는? => 
+                    if (!DuplicatedCheckCheese[eatRecord[j][1]] || !DuplicatedCheckMen[eatRecord[j][0]]) {
+                        DuplicatedCheckCheese = true;
+                        DuplicatedCheckMen = true;
+                        eatCheeseBeforeSicked[eatRecord[j][1]] += 1;
+                    }
                 }
             }
         }
@@ -75,7 +83,7 @@ public class Main {
 // sickedPeople[sickedRecord[i][0]]  = true;
 // 아픈 이들을 체크한 후, eatCheeseBeforeSicked 순회한다. S인 값이 있다면 해당 치즈는 상할 가능성이 있는 것이다.
 // 상할 가능성이 있다면 이제 이외에 감염된 자가 있을지도 탐색해야 한다.
-// if eatRecord[j][1] == i then sickedPeople[eatRecord[i][1]] = true;
+// if eatRecord[j][1] == i then sickedPeople[eatRecord[j][0]] = true;
 // sickedPeople[i] 를 순회하여 true면 cnt++
 // 
 // 이외에 감염된 자가 있는지?
