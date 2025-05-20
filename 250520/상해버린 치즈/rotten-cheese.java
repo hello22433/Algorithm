@@ -37,8 +37,8 @@ public class Main {
                 if (eatRecord[j][0] == sickedRecord[i][0] && eatRecord[j][2] < sickedRecord[i][1]) {
                     // 한 사람이 같은 치즈를 중복해서 먹을 경우는? => 
                     if (!DuplicatedCheckCheese[eatRecord[j][1]] || !DuplicatedCheckMen[eatRecord[j][0]]) {
-                        DuplicatedCheckCheese = true;
-                        DuplicatedCheckMen = true;
+                        DuplicatedCheckCheese[eatRecord[j][1]] = true;
+                        DuplicatedCheckMen[eatRecord[j][0]] = true;
                         eatCheeseBeforeSicked[eatRecord[j][1]] += 1;
                     }
                 }
