@@ -15,9 +15,9 @@ public class Main {
         }
 
         int sum = 0;
-        for (int i = 0; i < n+1; i++) {
+        for (int i = 1; i < n+1; i++) {
             int minRank = Integer.MAX_VALUE; 
-            for (int j = 0; j < n+1; j++) {
+            for (int j = 1; j < n+1; j++) {
                 if (makeIndividualRanking[i][j] != 0) minRank = Math.min(minRank, n-j);
             }
             if (minRank != Integer.MAX_VALUE) sum += minRank;
