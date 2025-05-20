@@ -14,18 +14,15 @@ public class Main {
         int count = 0;
         for (int i = 0; i < n; i++) {
             for (int j = i+1; j < n; j++) {
-                if ((x1[i]-x1[j]<0 && x2[i]-x2[j]>0) || (x1[i]-x1[j]>0 && x2[i]-x2[j]<0)) {
-                    if (!x[i]) {
-                        count++;
+                if ((x1[i]<x1[j] && x2[i]>x2[j]) || (x1[i]>x1[j] && x2[i]<x2[j])) {
                         x[i] = true;
-                    }
-
-                    if (!x[j]) {
-                        count++;
                         x[j] = true;
-                    }
                 }
             }
+        }
+
+        for (int i = 0; i < n; i++) {
+            if (!x[i]) count++;
         }
 
         System.out.print(count);
