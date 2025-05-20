@@ -8,7 +8,7 @@ public class Main {
     public static boolean isValid(int num) {
         String strNum = String.valueOf(num);
         if (strNum.charAt(0)==strNum.charAt(1) || strNum.charAt(0)==strNum.charAt(2) || strNum.charAt(1)==strNum.charAt(2)) return false;
-        if (strNum.charAt(0)==0 || strNum.charAt(1)==0 || strNum.charAt(2)==0) return false;
+        if (strNum.charAt(0)=='0' || strNum.charAt(1)=='0' || strNum.charAt(2)=='0') return false;
 
         for (int idx = 0; idx < n; idx++) {
             if (!(checkBall(num, idx) && checkStrike(num, idx))) {
