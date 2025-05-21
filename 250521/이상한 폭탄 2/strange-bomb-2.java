@@ -14,7 +14,7 @@ public class Main {
         int maxNumberBomb = Integer.MIN_VALUE;
         for (int i = 0; i <= n-k-1; i++) {
             int selectBomb = bombs[i];
-            for (int j = i+1; j <= i+k; j++) {
+            for (int j = i+1; j <= i+k+1; j++) {
                 if (selectBomb == bombs[j]) {
                     maxNumberBomb = Math.max(maxNumberBomb, selectBomb);
                     break;
