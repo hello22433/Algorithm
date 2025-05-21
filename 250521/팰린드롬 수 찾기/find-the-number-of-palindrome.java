@@ -11,7 +11,7 @@ public class Main {
             String strI = String.valueOf(i);
 
             boolean check = false;
-            for (int j = 0; j < strI.length(); j++) {
+            for (int j = 0; j < strI.length()/2 +1; j++) {
                 int frontChar = strI.charAt(j);
                 int backChar = strI.charAt(strI.length() - 1 - j);
 
