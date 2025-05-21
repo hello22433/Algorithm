@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -9,12 +9,12 @@ public class Main {
         for (int i = 0; i < n; i++) {
             bombs[i] = sc.nextInt();
         }
-        // Please write your code here.
         
-        int maxNumberBomb = Integer.MIN_VALUE;
-        for (int i = 0; i <= n-k-1; i++) {
+        int maxNumberBomb = -1;
+        for (int i = 0; i < n; i++) {
             int selectBomb = bombs[i];
-            for (int j = i+1; j <= i+k+1; j++) {
+            for (int j = i+1; j <= i+k; j++) {
+                if (j == n) break;
                 if (selectBomb == bombs[j]) {
                     maxNumberBomb = Math.max(maxNumberBomb, selectBomb);
                     break;
