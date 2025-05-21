@@ -33,9 +33,9 @@ public class Main {
                 B -= TotalPrice;
                 cnt++;
             } else {
-                presentPrice /= 2;
+                TotalPrice /= 2;
 
-                if (B - (presentPrice + deliveryFee) >= 0) {
+                if (B - TotalPrice >= 0) {
                     cnt++;
                 }
                 break;
