@@ -13,15 +13,35 @@ public class Main {
 
             int minDistance = Integer.MAX_VALUE;
 
-            int distance = 1;
-            for (int j = 1; j < n; j++) {
-                if (seat.charAt(j) == '1' || i==j) {
-                    minDistance = Math.min(minDistance, distance);
-                    distance = 1;
-                } else {
-                    distance++;
+            boolean firstOne = false;
+            if (seat.charAt(0) == '1') {
+                int distance = 1;
+                for (int j = 1; j < n; j++) {
+
+                    if (seat.charAt(j) == '1' || i==j) {
+                        minDistance = Math.min(minDistance, distance);
+                        distance = 1;
+                    } else {
+                        distance++;
+                    }
+                }
+            } else {
+                int distance = 1;
+                for (int j = 1; j < n; j++) {
+                    if (!firstOne && seat.charAt(j) == '1') {
+                        firstOne = true;
+                        continue;
+                    }
+
+                    if (seat.charAt(j) == '1' || i==j) {
+                        minDistance = Math.min(minDistance, distance);
+                        distance = 1;
+                    } else {
+                        distance++;
+                    }
                 }
             }
+            
 
             result = Math.max(result, minDistance);
         }
