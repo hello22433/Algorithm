@@ -27,8 +27,9 @@ public class Main {
                 }
             } else {
                 int distance = 1;
-                for (int j = 1; j < n; j++) {
+                for (int j = 0; j < n; j++) {
                     if (!firstOne && (seat.charAt(j) == '1' || i == j)) {
+                        distance = 1; // 밑의 distance++ 가 실행될것이기 떄문에
                         firstOne = true;
                         continue;
                     }
