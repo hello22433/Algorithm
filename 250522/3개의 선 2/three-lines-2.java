@@ -56,14 +56,10 @@ public class Main {
                                 
                                 // 모든 점에서 해당 점선이 적용되는지 확인
                                 boolean check = false;
-                                outer : for (int q = 0; q < n; q++) {
-                                    for (int w = q+1; w < n; w++) {
-                                        for (int e = w+1; e < n; e++) {
-                                            if (!(xSet.contains(x[q]) || ySet.contains(y[q]))) {
-                                                check = true;
-                                                break outer;
-                                            }
-                                        }
+                                for (int q = 0; q < n; q++) {
+                                    if (!xSet.contains(x[q]) && !ySet.contains(y[q])) {
+                                        check = true;
+                                        break;
                                     }
                                 }
                                 if (!check) {
