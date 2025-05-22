@@ -55,17 +55,21 @@ public class Main {
                                 }
                                 
                                 // 모든 점에서 해당 점선이 적용되는지 확인
-                                for (int q = 0; q < n; q++) {
+                                boolean check = false;
+                                outer : for (int q = 0; q < n; q++) {
                                     for (int w = q+1; w < n; w++) {
                                         for (int e = w+1; e < n; e++) {
-                                            if ((xSet.contains(x[q]) || ySet.contains(y[q])) && (xSet.contains(x[w]) || ySet.contains(y[w])) && (xSet.contains(x[e]) || ySet.contains(y[e]))) {
-                                                System.out.print(1);
-                                                return;
+                                            if (!(xSet.contains(x[q]) || ySet.contains(y[q]))) {
+                                                check = true;
+                                                break outer;
                                             }
                                         }
                                     }
                                 }
-
+                                if (!check) {
+                                    System.out.print(1);
+                                    return;
+                                }
                                 
                             }
                         }
