@@ -9,10 +9,10 @@ public class Main {
 
         for (int i = 1; i <= n; i++) {
             
-            if (i > n/2) {
-                System.out.print(i);
-                return;
-            }
+            // if (i > n/2) {
+            //     System.out.print(i);
+            //     return;
+            // }
             
             // 시작점을 정한다
             boolean isOnlyOne = true;
