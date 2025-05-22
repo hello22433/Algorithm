@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.*;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -9,6 +9,7 @@ public class Main {
         // Please write your code here.
 
         int cnt = 0;
+        Set<String> set = new HashSet<>();
 
         // 가로
         for (int i = 0; i < 3; i++) {
@@ -19,12 +20,15 @@ public class Main {
 
                 // 기준을 잡고 돌린다.
                 int diffCnt = 0;
+                StringBuilder sb = new StringBuilder();
                 for (int k = 0; k < 3; k++) {
+                    sb.append(inp[i].charAt(k));
                     if (inp[i].charAt(k) != base) {
                         diffCnt++;
                     }
                 }
-                if (diffCnt == 1) {
+                if (diffCnt == 1 && !set.contains(sb.toString())) {
+                    set.add(sb.toString());
                     cnt++;
                     break;
                 }
@@ -41,12 +45,15 @@ public class Main {
 
                 // 기준을 잡고 돌린다.
                 int diffCnt = 0;
+                StringBuilder sb = new StringBuilder();
                 for (int k = 0; k < 3; k++) {
+                    sb.append(inp[k].charAt(i));
                     if (inp[k].charAt(i) != base) {
                         diffCnt++;
                     }
                 }
-                if (diffCnt == 1) {
+                if (diffCnt == 1 && !set.contains(sb.toString())) {
+                    set.add(sb.toString());
                     cnt++;
                     break;
                 }
@@ -60,13 +67,16 @@ public class Main {
             char base = inp[j].charAt(j);
 
             // 기준을 잡고 돌린다.
+            StringBuilder sb = new StringBuilder();
             int diffCnt = 0;
             for (int k = 0; k < 3; k++) {
+                sb.append(inp[k].charAt(k));
                 if (inp[k].charAt(k) != base) {
                     diffCnt++;
                 }
             }
-            if (diffCnt == 1) {
+            if (diffCnt == 1 && !set.contains(sb.toString())) {
+                set.add(sb.toString());
                 cnt++;
                 break;
             }
@@ -78,13 +88,16 @@ public class Main {
             char base = inp[j].charAt(2-j);
 
             // 기준을 잡고 돌린다.
+            StringBuilder sb = new StringBuilder();
             int diffCnt = 0;
             for (int k = 2; k >= 0; k--) {
+                sb.append(inp[k].charAt(2-k));
                 if (inp[k].charAt(2-k) != base) {
                     diffCnt++;
                 }
             }
-            if (diffCnt == 1) {
+            if (diffCnt == 1 && !set.contains(sb.toString())) {
+                set.add(sb.toString());
                 cnt++;
                 break;
             }
