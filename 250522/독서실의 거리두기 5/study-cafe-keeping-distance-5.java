@@ -28,7 +28,7 @@ public class Main {
             } else {
                 int distance = 1;
                 for (int j = 1; j < n; j++) {
-                    if (!firstOne && seat.charAt(j) == '1') {
+                    if (!firstOne && (seat.charAt(j) == '1' || i == j)) {
                         firstOne = true;
                         continue;
                     }
