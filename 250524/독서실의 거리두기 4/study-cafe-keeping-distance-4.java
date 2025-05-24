@@ -12,7 +12,7 @@ public class Main {
         for (int i = 0; i < n; i++) {
             if (seat.charAt(i) == '1') continue;
             for (int j = i+1; j < n; j++) {
-                if (seat.charAt(i) == '1') continue;
+                if (seat.charAt(j) == '1') continue;
                 
                 int minDist = Integer.MAX_VALUE;
                 boolean isFirstOne = false;
