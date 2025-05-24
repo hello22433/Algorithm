@@ -28,7 +28,7 @@ public class Main {
                             dist++;
                         }
                     } else {
-                        if (seat.charAt(k) == '1') {
+                        if (seat.charAt(k) == '1' || k == i || k == j) {
                             isFirstOne = true;
                         }
                     }
