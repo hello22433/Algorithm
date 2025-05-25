@@ -11,8 +11,40 @@ public class Main {
             maxValue = Math.max(maxValue, nums[i]);
         }
 
-        int haveCost = m-1;
+        for (int maxSum = maxValue; maxSum <= 10000; maxSum++) {
+            
+            int sum = 0;
+            int haveCost = m-1;
+            boolean valid = false;
+            for (int i = 0; i < n; i++) {
+                sum += nums[i];
 
+                if (sum == maxSum) {
+                    if (haveCost > 0 || i == n-1) {
+                        sum = 0;
+                        valid = true;
+                        haveCost--;
+                    } else {
+                        valid = false;
+                        break;
+                    }
+                } else if (sum > maxSum) {
+                    if (haveCost > 0) {
+                        sum = nums[i];
+                        valid = true;
+                        haveCost--;
+                    } else {
+                        valid = false;
+                        break;
+                    }
+                }
+            }
+
+            if (valid) {
+                System.out.print(maxSum);
+                return;
+            }
+        }
         
     }
 }
