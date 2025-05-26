@@ -17,20 +17,26 @@ public class Main {
         
         // 기준의 선을 정한다.
 
-        for (int i = x1; i <= x2; i++) {
-            line[i]++;
-        }
-        for (int i = x3; i <= x4; i++) {
-            line[i]++;
+        if (x2 < x3 || x4 < x1) {
+            System.out.print("nonintersecting");
+        } else {
+            System.out.print("intersecting");
         }
 
-        for (int i = 0; i < 101; i++) {
-            if (line[i] == 2) {
-                System.out.print("intersecting");
-                return;
-            }
-        }
-        System.out.print("nonintersecting");
+        // for (int i = x1; i <= x2; i++) {
+        //     line[i]++;
+        // }
+        // for (int i = x3; i <= x4; i++) {
+        //     line[i]++;
+        // }
+
+        // for (int i = 0; i < 101; i++) {
+        //     if (line[i] == 2) {
+        //         System.out.print("intersecting");
+        //         return;
+        //     }
+        // }
+        // System.out.print("nonintersecting");
     }
 }
 
