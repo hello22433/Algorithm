@@ -21,6 +21,12 @@ public class Main {
 
         for (int i = p; i <= M; i++) {
             set.add(c[i]);
+
+            for (int j = 1; j < p; j++) {
+                if (u[i] == u[j]) {
+                    set.add(c[j]);
+                }
+            }
         }
 
         for (int i = 1; i <= N; i++) {
