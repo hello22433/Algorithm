@@ -13,13 +13,21 @@ public class Main {
             if (b<c) {
                 System.out.print(b);
             } else {
-                System.out.print(c);
+                if (c<a) {
+                    System.out.print(a);
+                } else {
+                    System.out.print(c);
+                }
             }
         } else {
             if (a<c) {
                 System.out.print(a);
             } else {
-                System.out.print(c);
+                if (c<b) {
+                    System.out.print(b);
+                } else {
+                    System.out.print(c);
+                }
             }
         }
     }
