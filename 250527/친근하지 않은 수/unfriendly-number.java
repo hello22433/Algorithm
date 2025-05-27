@@ -6,10 +6,13 @@ public class Main {
 
         int a = sc.nextInt();
 
+        int count = 0;
         for (int i = 1; i <=a; i++) {
             
-            if (i%2!=0 || i%3!=0 || i%5!=0) continue;
-            System.out.print(i);
+            if (i%2==0 || i%3==0 || i%5==0) continue;
+
+            count++;
         }
+        System.out.print(count);
     }
 }
