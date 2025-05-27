@@ -6,7 +6,7 @@ public class Main {
 
         int a = sc.nextInt();
 
-        for (int s = a; s < 100; s++) {
+        for (int s = a; s <= 100; s++) {
             if (s >= 90) {
                 System.out.print("A ");
             } else if (s >= 80) {
