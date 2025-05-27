@@ -8,7 +8,7 @@ public class Main {
 
         int a = sc.nextInt();
 
-        System.out.printf(a);
+        System.out.println(a);
 
         if (a<0) {
             System.out.print("minus");
