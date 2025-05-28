@@ -10,10 +10,10 @@ public class Main {
 
         while (A!=25) {
             if (A>25) {
-            System.out.println("Higher");
+            System.out.println("Lower");
 
             } else {
-            System.out.println("Lower");
+            System.out.println("Higher");
 
             }
             A = sc.nextInt();
