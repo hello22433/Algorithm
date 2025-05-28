@@ -16,6 +16,7 @@ public class Main {
             System.out.println("Lower");
 
             }
+            A = sc.nextInt();
         }
         System.out.print("Good");
     }
