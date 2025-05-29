@@ -3,6 +3,6 @@ public class Main {
         // Please write your code here.
         int a = 13;
         double b = 0.165;
-        System.out.prinf("%d * %.6f = %.6f", a, b, a*b);
+        System.out.printf("%d * %.6f = %.6f", a, b, a*b);
     }
 }
