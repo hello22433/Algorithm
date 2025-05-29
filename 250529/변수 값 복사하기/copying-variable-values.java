@@ -4,8 +4,7 @@ public class Main {
         int a = 1;
         int b = 2;
         int c = 3;
-        int tempa= a;
         a = b = c;
-        System.out.print("%d %d %d", a, b, c);
+        System.out.printf("%d %d %d", a, b, c);
     }
 }
