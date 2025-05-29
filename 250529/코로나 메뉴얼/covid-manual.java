@@ -10,10 +10,10 @@ public class Main {
         String cYN = sc.next();
         int c = sc.nextInt();
 
-        Person[] arr= new Person(3);
-        arr[0] = Perosn(aYN, a);
-        arr[1] = Perosn(bYN, b);
-        arr[2] = Perosn(cYN, c);
+        Person[] arr= new Person[3];
+        arr[0] = new Person(aYN, a);
+        arr[1] = new Person(bYN, b);
+        arr[2] = new Person(cYN, c);
 
         int cnt = 0;
 
