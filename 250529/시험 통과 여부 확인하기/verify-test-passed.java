@@ -8,7 +8,7 @@ public class Main {
         if (n >= 80) {
             System.out.print("pass");
         } else {
-            System.out.print("%d more score",80-n);
+            System.out.printf("%d more score",80-n);
         }
 
 
