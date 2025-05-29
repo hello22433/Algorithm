@@ -17,7 +17,7 @@ public class Main {
             if (b>c) {
                 System.out.print(c);
             } else {
-                Systme.out.print(b);
+                System.out.print(b);
             }
         }
     }
