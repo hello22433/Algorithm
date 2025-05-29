@@ -5,6 +5,6 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         String s = sc.next();
         String[] strArr = s.split(":");
-        System.out.println(strArr[0]+1 + ":" + strArr[1]);
+        System.out.println(Integer.parseInt(strArr[0])+1 + ":" + strArr[1]);
     }
 }
