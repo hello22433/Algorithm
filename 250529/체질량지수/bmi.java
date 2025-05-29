@@ -7,7 +7,7 @@ public class Main {
         int w = sc.nextInt();
         
         int b = 10000*w / (h*h);
-        System.out.printf(b);
+        System.out.println(b);
         if (b >= 25) {
             System.out.print("Obesity");
         }
