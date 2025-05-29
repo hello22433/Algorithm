@@ -6,6 +6,6 @@ public class Main {
         // 추가 코드 작성
 
         int a = sc.nextInt();
-        System.out.printf("Your score is %d point",a);
+        System.out.printf("Your score is %d point.",a);
     }
 }
