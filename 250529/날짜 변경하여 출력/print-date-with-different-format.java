@@ -5,6 +5,6 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         String s = sc.next();
         String[] strArr = s.split("\\.");
-        System.out.print(strArr[0] + "-" + strArr[0] + "-" + strArr[0]);
+        System.out.print(strArr[1] + "-" + strArr[2] + "-" + strArr[0]);
     }
 }
