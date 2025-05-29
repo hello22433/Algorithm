@@ -6,6 +6,6 @@ public class Main {
         int a = sc.nextInt();
         int b = sc.nextInt();
         int c = sc.nextInt();
-        System.out.printf("%d %d %d",a+b+c,(a+c+b)/3,a+b+c-(a+c+b)/3);
+        System.out.printf("%d\n%d\n%d",a+b+c,(a+c+b)/3,a+b+c-(a+c+b)/3);
     }
 }
