@@ -7,6 +7,6 @@ public class Main {
         int b = sc.nextInt();
         a+=87;
         b%=10;
-        System.out.printf(a + " " + b);
+        System.out.printf(a + "\n" + b);
     }
 }
