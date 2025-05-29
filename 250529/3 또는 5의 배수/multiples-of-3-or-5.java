@@ -6,7 +6,7 @@ public class Main {
         int a = sc.nextInt();
         
         
-        if (a%3 -= 0) {
+        if (a%3 == 0) {
             System.out.println("YES");
         } else {
 
@@ -14,7 +14,7 @@ public class Main {
         }
         
 
-        if (a%5 != 0) {
+        if (a%5 == 0) {
             System.out.println("YES");
         } else {
 
