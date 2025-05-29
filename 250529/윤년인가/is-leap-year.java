@@ -5,7 +5,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int s = sc.nextInt();
 
-        if (s %4 == 0 && (s%100 && s%400!=0)) {
+        if (s %4 == 0 && !(s%100 && s%400!=0)) {
             System.out.print("true");
         }
         else {
