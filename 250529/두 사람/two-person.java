@@ -8,9 +8,8 @@ public class Main {
         int bA = sc.nextInt();
         String bS = sc.next();
 
-        if (aA >= 19 || bA >= 19) {
-            if (aS.equals("M") || bS.equals("M")) System.out.print("1");
-            else System.out.print("0");
+        if (aA >= 19 && aS.equals("M") || bA >= 19 && bS.equals("M")) {
+            System.out.print("1");
         } else {
             System.out.print("0");
             
