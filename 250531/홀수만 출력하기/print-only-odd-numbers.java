@@ -6,9 +6,9 @@ public class Main {
         int n = sc.nextInt();
 
         for (int i = 1; i <= n; i++) {
-            
-            if (i%3 == 0 && i%2 != 0) {
-                System.out.println(i + " ");
+            int num  = sc.nextInt();
+            if (num%3 == 0 && num%2 != 0) {
+                System.out.println(num + " ");
             } else {
             }
             
