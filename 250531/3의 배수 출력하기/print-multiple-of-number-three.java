@@ -8,7 +8,8 @@ public class Main {
         int i = 1;
         while (i <= n) {
             if (i%3==0)
-            System.out.print(i++ + " ");
+            System.out.print(i + " ");
+            i++;
         }
     }
 }
