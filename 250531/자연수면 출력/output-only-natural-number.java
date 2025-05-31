@@ -10,7 +10,9 @@ public class Main {
             for (int i = 1; i <= b; i++) {
                 System.out.print(a);
             }
-        } 
+        } else {
+            System.out.print(0);
+        }
 
     }
 }
