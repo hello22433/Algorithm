@@ -8,9 +8,9 @@ public class Main {
 
         int sumVal = 1;
         int cnt = 0;
-        for (int i = a; i <= a; i++) {
+        for (int i = 1; i <= a; i++) {
 
-            if (i % 2 == 0 ) continue;
+            if (i % 2 == 0) continue;
             if (i % 10 == 5) continue;
             if (i % 3 == 0 && i % 9 != 0) continue;
 
