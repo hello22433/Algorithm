@@ -6,11 +6,17 @@ public class Main {
         int n = sc.nextInt();
 
         for (int i = 1; i <= n; i++) {
+            String strI = String.valueOf(i);
             
-            if (i%3 == 0) {
+            if (Character.getNumericValue(strI.charAt(0))%3 == 0) {
                 System.out.print(0 + " ");
             } else {
-                System.out.print(i + " ");
+                if (strI.length() > 1 && Character.getNumericValue(strI.charAt(1))%3 == 0) {
+                    System.out.print(0 + " ");
+                } else {
+                    System.out.print(i + " ");
+                }
+                
             }
         }
 
