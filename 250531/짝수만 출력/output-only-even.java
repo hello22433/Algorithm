@@ -9,7 +9,8 @@ public class Main {
         int i = 1;
         while (a <= b) {
             if (a%2==0)
-            System.out.print(a++ + " ");
+            System.out.print(a + " ");
+            a+= 1;
         }
     }
 }
