@@ -11,7 +11,7 @@ public class Main {
         for (int i = 1; i <= 100; i++) {
 
             if (sumVal + i >= a) {
-                System.out.print(i);
+                System.out.print(i-1);
                 break; 
             }
 
