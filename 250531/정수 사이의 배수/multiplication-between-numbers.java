@@ -7,14 +7,16 @@ public class Main {
         int b = sc.nextInt();
 
         int sumVal = 0;
+        int cnt = 0;
         for (int i = a; i <= b; i++) {
             
             if (i % 5 == 0 || i% 7 == 0)
+            cnt++;
             sumVal += i;
             
         }
 
-        System.out.print(sumVal + " " + sumVal/(double)(b-a));
+        System.out.printf("%d %.1f", sumVal, sumVal/(double)cnt);
 
     }
 }
