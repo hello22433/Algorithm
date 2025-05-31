@@ -11,8 +11,8 @@ public class Main {
         for (int i = 1; ; i++) {
 
             cnt++;
-            
-            if (a / (double) i <= 1) {
+
+            if (a / i <= 1) {
                 break;
             }
 
