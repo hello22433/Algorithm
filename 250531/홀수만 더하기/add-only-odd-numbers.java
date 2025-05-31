@@ -8,7 +8,7 @@ public class Main {
         int sumVal = 0;
         for (int i = 1; i <= a; i++) {
             if (i % 2 == 1 && i % 3 == 0)
-            sumVal += i;
+            sumVal += sc.nextInt();
             
         }
 
