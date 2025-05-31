@@ -7,7 +7,7 @@ public class Main {
         int c = 0;
         for (int i = 1; i <= 5; i++) {
             
-            if (i % 2 ==0) {
+            if (sc.nextInt() % 2 ==0) {
                 c +=1;
             } 
             
