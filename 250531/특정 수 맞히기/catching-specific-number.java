@@ -8,8 +8,8 @@ public class Main {
         int sumVal = 0;
         while (true) {
             n = sc.nextInt();
-            if (n < 25) System.out.print("Higher");
-            else if (n > 25) System.out.print("Lower");
+            if (n < 25) System.out.println("Higher");
+            else if (n > 25) System.out.println("Lower");
             else {
                 System.out.print("Good");
                 return;
