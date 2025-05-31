@@ -5,7 +5,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         String n = sc.next();
         for (int i = 1; i <= 8; i++) {
-            System.out.print("n");
+            System.out.print(n);
         }
     }
 }
