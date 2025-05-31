@@ -11,7 +11,7 @@ public class Main {
             if (Character.getNumericValue(strI.charAt(0))%3 == 0) {
                 System.out.print(0 + " ");
             } else {
-                if (strI.length() > 1 && Character.getNumericValue(strI.charAt(1))%3 == 0) {
+                if (strI.length() > 1 && Character.getNumericValue(strI.charAt(1)) != 0 && Character.getNumericValue(strI.charAt(1))%3 == 0) {
                     System.out.print(0 + " ");
                 } else {
                     System.out.print(i + " ");
