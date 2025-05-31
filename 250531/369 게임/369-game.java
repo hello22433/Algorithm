@@ -8,7 +8,7 @@ public class Main {
         for (int i = 1; i <= n; i++) {
             String strI = String.valueOf(i);
             
-            if (Character.getNumericValue(strI.charAt(0))%3 == 0) {
+            if (Character.getNumericValue(strI.charAt(0))%3 == 0 || i % 3 ==0) {
                 System.out.print(0 + " ");
             } else {
                 if (strI.length() > 1 && Character.getNumericValue(strI.charAt(1)) != 0 && Character.getNumericValue(strI.charAt(1))%3 == 0) {
