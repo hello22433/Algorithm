@@ -9,11 +9,11 @@ public class Main {
 
         if (c == 'A') {
             for (int i = 1; i <= n; i++) {
-                System.out.println(i);
+                System.out.print(i + " ");
             }
         } else if (c == 'D') {
             for (int i = n; i >= 1; i--) {
-                System.out.println(i);
+                System.out.print(i+ " ");
             }
         }
 
