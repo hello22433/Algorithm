@@ -16,11 +16,12 @@ public class Main {
                 str += "0";
             } else {
                 str += resultStr.charAt(i);
+                if (resultStr.charAt(i) == '.') {
+                    checkPoint = true;
+                }
             }
 
-            if (resultStr.charAt(i) == '.') {
-                checkPoint = true;
-            }
+            
 
             if (checkPoint) {
                 cnt++;
