@@ -10,12 +10,13 @@ public class Main {
         int cnt = 0;
         for (int i = 1; ; i++) {
 
-            if (a / i <= 1) {
+            cnt++;
+            
+            if (a / (double) i <= 1) {
                 break;
             }
 
             a /= i;
-            cnt++;
             
         }
         
