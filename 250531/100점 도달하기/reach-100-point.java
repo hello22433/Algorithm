@@ -7,15 +7,15 @@ public class Main {
 
         for (int i = n; i <= 100; i++) {
             if (i >= 90) {
-                System.out.println('A');
+                System.out.println("A ");
             } else if (i >= 80) {
-                System.out.println('B');
+                System.out.println("B ");
             } else if (i >= 70) {
-                System.out.println('C');
+                System.out.println("C ");
             } else if (i >= 60) {
-                System.out.println('D');
+                System.out.println("D ");
             } else {
-                System.out.println('F');
+                System.out.println("F ");
             }
             
         }
