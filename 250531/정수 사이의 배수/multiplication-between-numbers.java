@@ -14,7 +14,7 @@ public class Main {
             
         }
 
-        System.out.print(sumVal + sumVal/(double)(b-a));
+        System.out.print(sumVal + " " + sumVal/(double)(b-a));
 
     }
 }
