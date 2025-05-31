@@ -21,7 +21,7 @@ public class Main {
         
         
 
-        System.out.print("%d %.1f", sumVal, sumVal/(double)cnt);
+        System.out.printf("%d %.1f", sumVal, sumVal/(double)cnt);
 
     }
 }
