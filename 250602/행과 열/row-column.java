@@ -6,8 +6,8 @@ public class Main {
         int a = sc.nextInt();
         int b = sc.nextInt();
 
-        for (int i = 1; i <= n; i++) {
-            for (int j = 1; j <= n; j++) {
+        for (int i = 1; i <= a; i++) {
+            for (int j = 1; j <= b; j++) {
                 System.out.printf("%d ",i*j);
             }
             System.out.println();
