@@ -8,10 +8,10 @@ public class Main {
         int cnt = 0;
         while (true) {
             int age = sc.nextInt();
+            if (age > 29 || age < 20) break;
             
             sumVal += age;
             cnt++;
-            if (age > 29 || age < 20) break;
             
         }
         System.out.print(sumVal/(double)cnt);
