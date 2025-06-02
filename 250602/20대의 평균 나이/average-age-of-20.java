@@ -14,6 +14,6 @@ public class Main {
             cnt++;
             
         }
-        System.out.printf(".2f", sumVal/(double)cnt);
+        System.out.printf("%.2f", sumVal/(double)cnt);
     }
 }
