@@ -15,8 +15,8 @@ public class Main {
                     arr[j-1][i-1] = j;
                 }
             } else {
-                for (int j = n; j >= 1; j--) {
-                    arr[j-1][i-1] = j;
+                for (int j = 1; j <= n; j++) {
+                    arr[j-1][i-1] = n-(j-1);
                 }
             }
             
