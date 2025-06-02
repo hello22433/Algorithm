@@ -26,6 +26,7 @@ public class Main {
                     System.out.printf("%d ", arr[i][j]);
                 }
             }
+                    System.out.println();
             
             
         }
