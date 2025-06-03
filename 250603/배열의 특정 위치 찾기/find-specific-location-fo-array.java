@@ -10,9 +10,9 @@ public class Main {
         int sum2 = 0;
         int cnt2 = 0;
         double ave = 0;
-        for (int i = 0; i < 10; i += 2) {
+        for (int i = 0; i < 10; i++) {
             int num = sc.nextInt();
-            if (num % 2 == 0) sum1 += num;
+            if ((i+1) % 2 == 0) sum1 += num;
             if ((i+1) % 3 == 0) {
                 sum2 += num;
                 cnt2++;
