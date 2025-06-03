@@ -9,7 +9,7 @@ public class Main {
         for (int i = 0; i < 10; i++) {
             arr[i] = sc.next();
             if (i == 1 || i == 4 || i == 7) {
-                System.out.print(arr[i]);
+                System.out.print(arr[i] + " ");
             }
         }
     }
