@@ -11,7 +11,7 @@ public class Main {
                     System.out.printf("(%d, %d)\n", i, j);
 
                 } else {
-                    System.out.printf("(%d, %d)", i, j);
+                    System.out.printf("(%d, %d) ", i, j);
 
                 }
             }
