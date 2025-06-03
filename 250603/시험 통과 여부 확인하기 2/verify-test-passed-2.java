@@ -11,7 +11,7 @@ public class Main {
 
         for (int i = 0; i < n; i++) {
             // arr[i] = sc.nextDouble();
-            int sum == 0;
+            int sum = 0;
             for (int j = 0; j < 4; j++) {
                 sum += sc.nextInt();
             }
