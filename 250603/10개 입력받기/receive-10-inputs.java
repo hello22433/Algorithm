@@ -16,8 +16,10 @@ public class Main {
             cnt++;
         }
 
-        for (int i = 9; i >= 0; i--) {
-            if (arr[i] != 0) System.out.printf("%.0f %.1f", sum, sum/cnt);
-        }
+        System.out.printf("%.0f %.1f", sum, sum/cnt);
+
+        // for (int i = 9; i >= 0; i--) {
+        //     if (arr[i] != 0) System.out.printf("%.0f %.1f", sum, sum/cnt);
+        // }
     }
 }
