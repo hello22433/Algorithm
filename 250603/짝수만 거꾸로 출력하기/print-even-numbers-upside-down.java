@@ -12,7 +12,7 @@ public class Main {
         }
 
         for (int i = n-1; i>=0; i--) {
-            if (arr[i] ! = 0) System.out.print(arr[i] + " ");
+            if (arr[i] != 0) System.out.print(arr[i] + " ");
         }
     }
 }
