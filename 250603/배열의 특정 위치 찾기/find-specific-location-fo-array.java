@@ -9,7 +9,7 @@ public class Main {
         int sum1 = 0;
         int sum2 = 0;
         int cnt2 = 0;
-        int ave = 0;
+        double ave = 0;
         for (int i = 0; i < 10; i += 2) {
             int num = sc.nextInt();
             if (num % 2 == 0) sum1 += num;
