@@ -6,7 +6,6 @@ public class Main {
         int n = sc.nextInt();
 
         double[] arr = new double[n];  // 크기가 n인 실수형을 저장하기 위한 배열 선언
-        double sum = 0;
         int cnt = 0;
 
         for (int i = 0; i < n; i++) {
