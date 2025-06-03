@@ -19,9 +19,9 @@ public class Main {
             }
             
         }
-
-        for (int i = 9; i >= 0; i--) {
-            if (arr[i] != 0) System.out.printf("%d %d", cnt, sum);
-        }
+        System.out.printf("%d %.0f", cnt, sum);
+        
+        // for (int i = 9; i >= 0; i--) {
+        //     if (arr[i] != 0)
     }
 }
