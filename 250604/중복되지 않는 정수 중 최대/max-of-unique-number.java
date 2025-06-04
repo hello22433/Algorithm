@@ -6,16 +6,29 @@ public class Main {
         
         int n = sc.nextInt();
         boolean[] check = new boolean[1001];
+        boolean[] check2 = new boolean[1001];
 
-        int max = Integer.MIN_VALUE;
+        int[] arr = new int[n];
         for (int i = 0; i < n; i++) {
-            int num = sc.nextInt();
+            arr[i] = sc.nextInt();
+        }
+
+        for (int i = 0; i < n; i++) {
+            int num = arr[i];
+
             if (!check[num]) {
                 check[num] = true;
-                max = Math.max(max, num);
+            } else {
+                check2[num] = true;
+            }
+        }
+        
+        int max = -1;
+        for (int i = 0; i < n; i++) {
+            if (!check2[arr[i]]) {
+                max = Math.max(max, arr[i]);
             }
         }
         System.out.print(max);
-
     }
 }
