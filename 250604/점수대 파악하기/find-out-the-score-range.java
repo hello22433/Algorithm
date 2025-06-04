@@ -13,7 +13,7 @@ public class Main {
             countArr[num/10]++; 
         }
 
-        for (int i = 1; i<=9; i++) {
+        for (int i = 10; i>=1; i--) {
             System.out.println(i+"0" + " - " + countArr[i]);
         }
     }
