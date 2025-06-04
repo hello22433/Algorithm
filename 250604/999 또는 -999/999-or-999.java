@@ -8,13 +8,14 @@ public class Main {
          int min = Integer.MAX_VALUE;
         while (true) {
             int num = sc.nextInt();
-            max = Math.max(num, max);
-            min = Math.min(num, min);
 
             if (num == 999 || num == -999) {
                 System.out.print(max + " " + min);
                 break;
             }
+
+            max = Math.max(num, max);
+            min = Math.min(num, min);
         }
     }
 }
