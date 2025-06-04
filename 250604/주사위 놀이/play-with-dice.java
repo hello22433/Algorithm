@@ -10,7 +10,7 @@ public class Main {
             countArr[sc.nextInt()]++; 
         }
 
-        for (int i = 1; i<=9; i++) {
+        for (int i = 1; i<=6; i++) {
             System.out.println(countArr[i]);
         }
     }
