@@ -19,5 +19,6 @@ public class Main {
         for (int i = 0; i < remains.length; i++) {
             val += remains[i] * remains[i];
         }
+        System.out.print(val);
     }
 }
