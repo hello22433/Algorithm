@@ -5,12 +5,14 @@ public class Main {
         Scanner sc = new Scanner(System.in);
          
          int n = sc.nextInt();
-         int max1 = Integer.MIN_VALUE;
+         int max1 = sc.nextInt();
          int max2 = Integer.MIN_VALUE;
 
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n-1; i++) {
             int num = sc.nextInt();
             if (max1 >= num) {
+                max2 = Math.max(max2, num);
+            } else {
                 max2 = max1;
             }
             
