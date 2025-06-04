@@ -6,12 +6,15 @@ public class Main {
          
         int n = sc.nextInt();
         int min = Integer.MAX_VALUE;
-        int cnt = 0;
+        int cnt = 1;
         for (int i = 1; i <= n; i++) {
             int num = sc.nextInt();
             if (min == num) {
                 cnt++;
             } else {
+                if (min > num) {
+                    cnt = 1;
+                }
                 min = Math.min(min, num);
             }
         }
