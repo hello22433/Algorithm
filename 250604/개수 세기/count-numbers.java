@@ -10,7 +10,7 @@ public class Main {
 
         int cnt = 0;
         for (int i = 0; i < n; i++) {
-            if (m.equals(sc.nextInt())) {
+            if (m == sc.nextInt()) {
                 cnt++;
             }
         }
