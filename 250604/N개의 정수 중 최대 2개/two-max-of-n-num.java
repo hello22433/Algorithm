@@ -11,7 +11,7 @@ public class Main {
         for (int i = 0; i < n; i++) {
             int num = sc.nextInt();
             if (max1 >= num) {
-                max2 = Math.max(max2, num);
+                max2 = max1;
             }
             
             max1 = Math.max(max1, num);
