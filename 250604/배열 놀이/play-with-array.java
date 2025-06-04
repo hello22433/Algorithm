@@ -17,12 +17,12 @@ public class Main {
 
             if (command == 1) {
                 int a = sc.nextInt();
-                System.out.println(arr[a]);
+                System.out.println(arr[a-1]);
             } else if (command == 2) {
                 int b = sc.nextInt();
                 for (int j = 0; j < n; j++) {
                     if (arr[j] == b) {
-                        System.out.println(j);
+                        System.out.println(j+1);
                         continue outer;
                     }
                 }
@@ -30,7 +30,7 @@ public class Main {
             } else if (command == 3) {
                 int s = sc.nextInt();
                 int e = sc.nextInt();
-                for (int j = s; j <= e; j++) {
+                for (int j = s-1; j <= e-1; j++) {
                     System.out.print(arr[j] + " ");
                 }
                 System.out.println();
