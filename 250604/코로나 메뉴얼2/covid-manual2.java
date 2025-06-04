@@ -17,7 +17,7 @@ public class Main {
                 A++;
             } else if (temper >= 37) {
                 B++;
-            } else if (temper < 37) {
+            } else if (YN.equals("Y") && temper < 37) {
                 C++;
             } else {
                 D++;
