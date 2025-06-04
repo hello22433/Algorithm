@@ -13,7 +13,7 @@ public class Main {
 
             if (num == 999 || num == -999) {
                 System.out.print(max + " " + min);
-                b
+                break;
             }
         }
     }
