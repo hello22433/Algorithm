@@ -8,7 +8,7 @@ public class Main {
         // 열크기
         int m = sc.nextInt();
 
-        int[][] arr1 = new int[n][n];
+        int[][] arr1 = new int[n][m];
 
         int num = 0;
         // 열
