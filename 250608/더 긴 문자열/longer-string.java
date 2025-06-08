@@ -8,7 +8,10 @@ public class Main {
         String str2 = sc.next();
         int len = Math.max(str1.length(), str2.length());
 
-
-        System.out.println(len);
+        if (str1.length() == str2.length()) {
+            System.out.print("same");
+        } else {
+            System.out.println(len);
+        }
     }
 }
