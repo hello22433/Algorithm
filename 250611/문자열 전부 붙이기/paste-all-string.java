@@ -13,6 +13,6 @@ public class Main {
             sb.append(str);
 
         }
-        System.out.print(str.toString());
+        System.out.print(sb.toString());
     }
 }
