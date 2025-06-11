@@ -16,10 +16,8 @@ public class Main {
             } else {
                 sb.append(String.valueOf(ch));
                 sb.append(chCnt);
-                if (i != str.length()-1) {
-                    ch = str.charAt(i);
-                    chCnt = 1;
-                }
+                ch = str.charAt(i);
+                chCnt = 1;
                 // 만약 마지막 순회가 아니었다면 다음 것을 단어에 넣고 카운트를 0으로 쳐서 다음에 1로 초기화되게 한다.
             }
         }
