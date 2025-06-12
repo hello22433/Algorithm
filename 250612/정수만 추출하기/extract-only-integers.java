@@ -14,6 +14,7 @@ public class Main {
             if (!('0' <= ch && ch <= '9')) {
                 AAllInt = false;
                 sum += Integer.parseInt(A.substring(0,i));
+                break;
             }
         }
         if (AAllInt) sum += Integer.parseInt(A);
@@ -24,6 +25,7 @@ public class Main {
             if (!('0' <= ch && ch <= '9')) {
                 BAllInt = false;
                 sum += Integer.parseInt(B.substring(0,i));
+                break;
             }
         }
         if (BAllInt) sum += Integer.parseInt(B);
