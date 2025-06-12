@@ -13,7 +13,7 @@ public class Main {
         System.out.print(sumDivideTen(sum));
     }
 
-    public static void sumDivideTen(int sum) {
+    public static int sumDivideTen(int sum) {
         return sum / 10;
     }
 }
