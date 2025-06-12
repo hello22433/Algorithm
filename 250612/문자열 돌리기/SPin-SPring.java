@@ -7,6 +7,7 @@ public class Main {
 
         String A = sc.next();
         int L = A.length();
+        System.out.println(A);
 
         for (int i = 0; i < L; i++) {
             A = A.substring(A.length()-1,A.length()) + A.substring(0,A.length()-1);
