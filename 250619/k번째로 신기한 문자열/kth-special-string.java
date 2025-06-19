@@ -15,6 +15,8 @@ public class Main {
         String[] selectedWords = new String[n];
 
         for (int i = 0; i < n; i++) {
+            if (t.length() > words[i].length()) continue;
+
             if (t.equals(words[i].substring(0,t.length()))) {
                 selectedWords[idx++] = words[i];
             }
