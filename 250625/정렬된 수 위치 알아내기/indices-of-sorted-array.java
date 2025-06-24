@@ -11,7 +11,7 @@ public class Main {
         // Please write your code here.
 
         int[] sortedArr = Arrays.stream(arr).sorted().toArray();
-        boolean[] visited = new boolean[1000001];
+        boolean[] visited = new boolean[n];
         int[] moveRecord = new int[n];
 
         for (int i = 0; i < n; i++) {
@@ -47,4 +47,4 @@ public class Main {
 // 해결
 // 순서를 저장할 새로운 배열 생성 int[] moveLocation
 // 방문을 저장할 새로운 배열 생성 boolean[] visited => 1부터 1000000까지 저장해야 한다. 길이 1000001 
-// !visited[arr[i]] && arr[i] == sortedArr[j]
+// !visited[j] && arr[i] == sortedArr[j] 방문을 j인덱스(sortedArr의 인덱스)에 했으면 다시 방문할 수 없다
