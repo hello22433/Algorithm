@@ -89,7 +89,6 @@ public class Main {
             // 이 때에도 처음과 마지막이 1이 아닐때를 나누어야 한다.
             // 가장 먼 거리를 둔 인덱스들 사이에 1을 넣는다.
             seatsArr[(maxEndIdx+maxStartIdx) / 2] = '1';
-            System.out.println(maxEndIdx + " " + maxStartIdx);
 
             // 다시 최대 거리를 구한다.
             firstCheck = false;
