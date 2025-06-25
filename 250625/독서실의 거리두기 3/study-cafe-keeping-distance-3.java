@@ -17,12 +17,15 @@ public class Main {
             char seat = seats.charAt(i);
             if (seat == '1') {
                 endIdx = i;
+                // System.out.println(startIdx + " " + endIdx);
+
                 if (endIdx - startIdx > distance) {
                     // 새로 찾은 거리가, 기존 거리보다 멀다면 그 사이에 놓아야 하므로 
                     // 둘 인덱스를 기록해야 한다. 
                     // 최종적으로 둘 인덱스를 더하고 나누기 2하면 된다.
                     minStartIdx = startIdx;
                     minEndIdx = endIdx;
+                    distance = endIdx - startIdx;
                 } else {
                     // 현상유지
                 }
@@ -51,6 +54,7 @@ public class Main {
             } 
         }
 
+        // System.out.print(seats);
         System.out.print(minDistance);
     }
 }
