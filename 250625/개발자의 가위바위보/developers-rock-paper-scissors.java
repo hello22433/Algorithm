@@ -50,7 +50,7 @@ public class Main {
         // 4 보 바위 가위
         // 5 보 가위 바위
         if (firstSRP.equals("scissors")) {
-            if (secondSRP.equals("rock")) {
+            if (secondSRP.equals("paper")) {
                 return 1;
             }
         } else if (firstSRP.equals("rock")) {
