@@ -30,44 +30,139 @@ public class Main {
             }
         }
 
-        // 마지막이 1일때
-        // 가장 먼 거리를 둔 인덱스들 사이에 1을 넣는다.
-        seatsArr[(maxEndIdx+maxStartIdx) / 2] = '1';
-
-        // 다시 최대 거리를 구한다.
+        
         int minDistance1 = Integer.MAX_VALUE;
-        startIdx = 0;
-        for (int i = 1; i < n; i++) {
-            char seat = seatsArr[i];
-
-            if (seat == '1') {
-                endIdx = i;
-                minDistance1 = Math.min(minDistance1, endIdx - startIdx);
-
-                startIdx = i;
-            }
-        }
-
-        // 마지막이 1이 아닐때 
-        // 마지막에 1을 넣는다.
-        seatsArr[(maxEndIdx+maxStartIdx) / 2] = '0';
-        seatsArr[n-1] = '1';
-
-        // 다시 최대 거리를 구한다.
         int minDistance2 = Integer.MAX_VALUE;
-        startIdx = 0;
-        for (int i = 1; i < n; i++) {
-            char seat = seatsArr[i];
+        int minDistance3 = Integer.MAX_VALUE;
+        // 처음이 1이 아닐때 
+        if (seatsArr[0] != '1') {
+            // 1을 처음에 넣는다.
+            seatsArr[0] = '1';
+            // 다시 최대 거리를 구한다.
+            boolean firstCheck = false;
+            startIdx = 0;
+            for (int i = 0; i < n; i++) {
+                char seat = seatsArr[i];
 
-            if (seat == '1') {
-                endIdx = i;
-                minDistance2 = Math.min(minDistance2, endIdx - startIdx);
+                if (seat == '1') {
+                    if (!firstCheck) {
+                        firstCheck = true;
+                        startIdx = i;
+                        continue;
+                    }
+                    endIdx = i;
+                    minDistance1 = Math.min(minDistance1, endIdx - startIdx);
 
-                startIdx = i;
+                    startIdx = i;
+                }
             }
-        }
+            seatsArr[0] = '0';
 
-        System.out.print(Math.max(minDistance1, minDistance2));
+            // 마지막이 1이 아닐떄
+            if (seatsArr[n-1] != '1') {
+                // 마지막에 1을 넣는다.
+                seatsArr[n-1] = '1';
+                // 다시 최대 거리를 구한다.
+                firstCheck = false;
+                startIdx = 0;
+                for (int i = 0; i < n; i++) {
+                    char seat = seatsArr[i];
+
+                    if (seat == '1') {
+                        if (!firstCheck) {
+                            firstCheck = true;
+                            startIdx = i;
+                            continue;
+                        }
+                        endIdx = i;
+                        minDistance2 = Math.min(minDistance2, endIdx - startIdx);
+
+                        startIdx = i;
+                    }
+                }
+                seatsArr[n-1] = '0';
+            } else {
+                minDistance2 = 0;
+            }
+
+            // 처음과 마지막이 1일때 (이든 아니던 해봐야 하는 순서임)
+            // 이 때에도 처음과 마지막이 1이 아닐때를 나누어야 한다.
+            // 가장 먼 거리를 둔 인덱스들 사이에 1을 넣는다.
+            seatsArr[(maxEndIdx+maxStartIdx) / 2] = '1';
+            System.out.println(maxEndIdx + " " + maxStartIdx);
+
+            // 다시 최대 거리를 구한다.
+            firstCheck = false;
+            startIdx = 0;
+            for (int i = 0; i < n; i++) {
+                char seat = seatsArr[i];
+
+                if (seat == '1') {
+                    if (!firstCheck) {
+                        firstCheck = true;
+                        startIdx = i;
+                        continue;
+                    }
+                    endIdx = i;
+                    minDistance3 = Math.min(minDistance3, endIdx - startIdx);
+
+                    startIdx = i;
+                }
+            }
+            // seatsArr[(maxEndIdx+maxStartIdx) / 2] = '0';
+            
+        } else {
+            minDistance1 = 0;
+
+            // 마지막이 1이 아닐떄
+            if (seatsArr[n-1] != '1') {
+                // 마지막에 1을 넣는다.
+                seatsArr[n-1] = '1';
+                // 다시 최대 거리를 구한다.
+                startIdx = 0;
+                for (int i = 1; i < n; i++) {
+                    char seat = seatsArr[i];
+
+                    if (seat == '1') {
+                        endIdx = i;
+                        minDistance2 = Math.min(minDistance2, endIdx - startIdx);
+
+                        startIdx = i;
+                    }
+                }
+                seatsArr[n-1] = '0';
+            } else {
+                minDistance2 = 0;
+            }
+
+
+            // 처음과 마지막이 1일때 (이든 아니던 해봐야 하는 순서임)
+            // 이 때에도 처음과 마지막이 1이 아닐때를 나누어야 한다.
+            // 가장 먼 거리를 둔 인덱스들 사이에 1을 넣는다.
+            seatsArr[(maxEndIdx+maxStartIdx) / 2] = '1';
+
+            // 다시 최대 거리를 구한다.
+            startIdx = 0;
+            for (int i = 1; i < n; i++) {
+                char seat = seatsArr[i];
+
+                if (seat == '1') {
+                    endIdx = i;
+                    minDistance3 = Math.min(minDistance3, endIdx - startIdx);
+
+                    startIdx = i;
+                }
+            }
+            // seatsArr[(maxEndIdx+maxStartIdx) / 2] = '0';
+        }
+        
+
+        
+        
+        
+        
+        
+        System.out.print(Math.max(minDistance1, Math.max(minDistance2, minDistance3)));
     }
 }
 
@@ -97,3 +192,18 @@ public class Main {
 // 만약 새로운거리가 이전거리(초기값 MAX)보다 크다면 이전거리에 새로운거리를 대입하고,
 // 스타트인덱스와 마지막인덱스를 별도의 변수에 저장한다. (minStartIdx, minEndIdx)
 // 후에 스타트인덱스에 i를 넣는다. (엔드인덱스는 조건 충족때마다 갱신되니, 스타트인덱스는 미리 갱신해놓아야 함.)
+
+// POC
+// 처음에 1이 없는 경우 로직 자체가 달라짐.
+// 있는 경우와 없는 경우를 나눠서 또 분기를 해야함.
+// 1이 없는 경우는, 1을 처음에 넣거나, 마지막에 넣거나, 가장 먼 것 사이에 넣는다.
+// 1이 있는 경우는, 마지막에 넣거나, 가장 먼 것 사이에 넣는다.
+
+// if (1이 처음에 없는 경우) {
+//    1을 처음에 넣는다.
+//    마지막에 넣는다.
+//    가장 먼 것 사이에 넣는다.
+// } else if (1이 처음에 있는 경우) {
+//    마지막에 넣는다.
+//    가장 먼 것 사이에 넣는다.
+// }
