@@ -7,7 +7,8 @@ public class Main {
         int c = sc.nextInt();
         // Please write your code here.
         
-        if (Math.abs(a-b) + Math.abs(b-c) == 2 || Math.abs(a-b) + Math.abs(a-c) == 2) {
+        if (Math.abs(b-a) + Math.abs(b-c) == 2 || Math.abs(a-b) + Math.abs(a-c) == 2 || 
+            Math.abs(c-a) + Math.abs(c-b) == 2) {
             System.out.print(0);
         } else if (Math.abs(a-b) == 2 || Math.abs(b-c) == 2) {
             System.out.print(1);
