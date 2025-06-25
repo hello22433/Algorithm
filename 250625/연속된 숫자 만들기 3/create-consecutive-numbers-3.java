@@ -7,6 +7,11 @@ public class Main {
         int c = sc.nextInt();
         // Please write your code here.
 
+        if (a+1 == b && b+1 == c) {
+            System.out.print(0);
+            return;
+        }
+
         if (Math.abs(a-b) < Math.abs(b-c)) {
             System.out.print(Math.abs(c - b)/2 + 1);
         } else {
