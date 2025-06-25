@@ -13,9 +13,9 @@ public class Main {
         }
 
         if (Math.abs(a-b) < Math.abs(b-c)) {
-            System.out.print(Math.abs(c - b)/2 + 1);
+            System.out.print(Math.abs(c - b) - 1);
         } else {
-            System.out.print(Math.abs(b - a)/2 + 1);
+            System.out.print(Math.abs(b - a) - 1);
         }
     }
 }
