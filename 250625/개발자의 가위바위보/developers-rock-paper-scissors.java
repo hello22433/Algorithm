@@ -11,89 +11,66 @@ public class Main {
             recordFight[i] = new int[]{first, second};
         }
         
-        
-        int onefirstWin = 0;
-        int twofirstWin = 0;
-        int maxFirstWin = 0;
-        for (int i = 0; i < n; i++) {
-            int first = recordFight[i][0];
-            int second = recordFight[i][1];
-
-            // 1이 가위인 경우, 2가지 경우
-            // 2가 바위, 3이 보
-            // first가 1이면, second가 2이면 second가 이기고, second가 3이면 first가 이긴다.
-            if (first == 1) {
-                if (second == 2) {
-                    // second 승이라 승점추가 x
-                } else {
-                    onefirstWin++;
-                }
-            } 
-
-            // 2가 보, 3이 바위
-            // first가 1이면, second가 2이면 first가 이기고, second가 3이면 second가 이긴다.
-            if (first == 1) {
-                if (second == 2) {
-                    twofirstWin++;
-                } else {
-                    // second 승이라 승점추가 x
-                }
-            } 
-
-            // // 1이 바위인 경우, 2가지 경우
-            // // 2가 보, 3이 가위
-            // firstWin = 0;
-            // // first가 1이면, second가 2이면 second가 이기고, second가 3이면 first가 이긴다.
-            // if (first == 1) {
-            //     if (second == 2) {
-            //         // second 승이라 승점추가 x
-            //     } else {
-            //         firstWin++;
-            //     }
-            // } 
-            // maxFirstWin = Math.max(maxFirstWin, firstWin);
-
-            // // 2가 바위, 3이 보
-            // firstWin = 0;
-            // // first가 1이면, second가 2이면 first가 이기고, second가 3이면 second가 이긴다.
-            // if (first == 1) {
-            //     if (second == 2) {
-            //         firstWin++;
-            //     } else {
-            //         // second 승이라 승점추가 x
-            //     }
-            // } 
-            // maxFirstWin = Math.max(maxFirstWin, firstWin);
-
-            // // 1이 보인 경우, 2가지 경우
-            // // 2가 가위, 3이 바위
-            // firstWin = 0;
-            // // first가 1이면, second가 2이면 second가 이기고, second가 3이면 first가 이긴다.
-            // if (first == 1) {
-            //     if (second == 2) {
-            //         // second 승이라 승점추가 x
-            //     } else {
-            //         firstWin++;
-            //     }
-            // } 
-            // maxFirstWin = Math.max(maxFirstWin, firstWin);
-
-            // // 2가 바위, 3이 가위
-            // firstWin = 0;
-            // // first가 1이면, second가 2이면 first가 이기고, second가 3이면 second가 이긴다.
-            // if (first == 1) {
-            //     if (second == 2) {
-            //         firstWin++;
-            //     } else {
-            //         // second 승이라 승점추가 x
-            //     }
-            // } 
-            // maxFirstWin = Math.max(maxFirstWin, firstWin);
-        }
-
-        System.out.print(Math.max(onefirstWin, twofirstWin));
+        int firstWinMaxScore = makeFirstWinMaxScoreInRockScissorsPaper(recordFight, n);
+        System.out.print(firstWinMaxScore);
         
     }
+
+    public static int makeFirstWinMaxScoreInRockScissorsPaper(int[][] recordFight, int n) {
+        int sumFirstWinScore1 = 0;
+        int sumFirstWinScore2 = 0;
+        int sumFirstWinScore3 = 0;
+        int sumFirstWinScore4 = 0;
+        int sumFirstWinScore5 = 0;
+        int sumFirstWinScore6 = 0;
+        for (int i = 0; i < n; i++) {
+            int firstNum = recordFight[i][0], secondNum = recordFight[i][1];
+
+            sumFirstWinScore1 += makeFirstWinScoreInrockScissorsPaper(SRP[firstNum], SRP[secondNum]);
+            sumFirstWinScore2 += makeFirstWinScoreInrockScissorsPaper(SPR[firstNum], SPR[secondNum]);
+            sumFirstWinScore3 += makeFirstWinScoreInrockScissorsPaper(RSP[firstNum], RSP[secondNum]);
+            sumFirstWinScore4 += makeFirstWinScoreInrockScissorsPaper(RPS[firstNum], RPS[secondNum]);
+            sumFirstWinScore5 += makeFirstWinScoreInrockScissorsPaper(PRS[firstNum], PRS[secondNum]);
+            sumFirstWinScore6 += makeFirstWinScoreInrockScissorsPaper(PSR[firstNum], PSR[secondNum]);
+        }
+        int[] sumFirstWinScore = {sumFirstWinScore1, sumFirstWinScore2, sumFirstWinScore3, sumFirstWinScore4, sumFirstWinScore5, sumFirstWinScore6};
+
+        int maxSum = 0;
+        for (int i = 0; i < 6; i++){
+            maxSum = Math.max(maxSum, sumFirstWinScore[i]);
+        }
+        return maxSum;
+    }
+
+    public static int makeFirstWinScoreInrockScissorsPaper(String firstSRP, String secondSRP) {
+        // 0 가위 바위 보
+        // 1 가위 보 바위
+        // 2 바위 가위 보
+        // 3 바위 보 가위
+        // 4 보 바위 가위
+        // 5 보 가위 바위
+        if (firstSRP.equals("scissors")) {
+            if (secondSRP.equals("rock")) {
+                return 1;
+            }
+        } else if (firstSRP.equals("rock")) {
+            if (secondSRP.equals("scissors")) {
+                return 1;
+            }
+        } else if (firstSRP.equals("paper")) {
+            if (secondSRP.equals("rock")) {
+                return 1;
+            }
+        }
+        return 0;
+    }
+
+    static String[] SRP = {"", "scissors", "rock", "paper"};
+    static String[] SPR = {"", "scissors", "paper", "rock"};
+    static String[] RSP = {"", "rock" , "scissors", "paper"};
+    static String[] RPS = {"", "rock", "paper", "scissors"};
+    static String[] PRS = {"", "paper", "rock", "scissors"};
+    static String[] PSR = {"", "paper", "scissors", "rock"};
 }
 
 // 문제
@@ -109,5 +86,9 @@ public class Main {
 // 1이 가위인 경우, 2가지 경우
 // 1이 바위인 경우, 2가지 경우
 // 1이 보인 경우, 2가지 경우
+// 이렇게 정하게 되면, first와 second가 몇인지에 따라서 결과가 달라진다.
+// 계산 과정을 어떻게 구현할 것인가?
+// 맵으로 만든다. -> map[first] 
 // 
+// 1이 이기면 
 // 
