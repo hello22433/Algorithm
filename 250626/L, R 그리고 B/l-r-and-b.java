@@ -7,6 +7,8 @@ public class Main {
         int LY = -1;
         int BX = -1;
         int BY = -1;
+        int RX = -1;
+        int RY = -1;
         for (int i = 0; i < 10; i++) {
             board[i] = sc.next().toCharArray();
             for (int j = 0; j < 10; j++) {
@@ -18,10 +20,17 @@ public class Main {
                     BX = i;
                     BY = j;
                 }
+                if (board[i][j] == 'R') {
+                    RX = i;
+                    RY = j;
+                }
             }
         }
-
-        System.out.print(Math.abs(LX-BX) + Math.abs(LY-BY) - 1);
+        if ((RX == LX && RX == BX) || (RY == LY && RY == BY)) {
+            System.out.print(Math.abs(LX-BX) + Math.abs(LY-BY) - 1 + 2);
+        } else {
+            System.out.print(Math.abs(LX-BX) + Math.abs(LY-BY) - 1);
+        }
 
     }
 }
