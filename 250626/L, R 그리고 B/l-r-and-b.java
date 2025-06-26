@@ -26,7 +26,10 @@ public class Main {
                 }
             }
         }
-        if ((RX == LX && RX == BX) || (RY == LY && RY == BY)) {
+
+        // 일직선이고 중간에 가로막은 경우
+        if (((RX == LX && RX == BX) && ((RY < LY && RY > BY) || (RY > LY && RY < BY))) 
+            || ((RY == LY && RY == BY) && ((RX < LX && RX > BX) || (RX > LX && RX < BX)))) {
             System.out.print(Math.abs(LX-BX) + Math.abs(LY-BY) - 1 + 2);
         } else {
             System.out.print(Math.abs(LX-BX) + Math.abs(LY-BY) - 1);
