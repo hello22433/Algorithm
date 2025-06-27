@@ -38,7 +38,12 @@ public class Main {
                 } else {
                     evenQuantites--;
                     cnt++;
+                    if (evenQuantites==0 && oddQuantites==0) {
+                        System.out.print(cnt);
+                        return;
+                    }
                 }
+                
                 isEvenOrOdd = false;
             } else {
                 if (oddQuantites == 0) {
@@ -47,7 +52,13 @@ public class Main {
                 } else {
                     oddQuantites--;
                     cnt++;
+                    if (evenQuantites==0 && oddQuantites==0) {
+                        System.out.print(cnt);
+                        return;
+                    }
                 }
+
+                
                 isEvenOrOdd = true;
             }
         }
