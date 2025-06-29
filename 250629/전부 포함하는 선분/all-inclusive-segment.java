@@ -1,67 +1,45 @@
-import java.util.Scanner;
+import java.util.*;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int[] line = new int[101];
         int n = sc.nextInt();
 
-        int maxPoint = Integer.MIN_VALUE;
-        int minPoint = Integer.MAX_VALUE;
+        
+
+        int[] arrX1 = new int[n];
+        int[] arrX2 = new int[n];
 
         for (int i = 0; i < n; i++) {
             int x1 = sc.nextInt();
             int x2 = sc.nextInt();
-            minPoint = Math.min(x1,minPoint);
-            maxPoint = Math.max(maxPoint,x2);
+            arrX1[i] = x1;
+            arrX2[i] = x2;
 
             for (int j = x1; j <= x2; j++) {
                 line[j] += 1;
             }
         }
 
-        int minPointEndPoint = 0;
-        int minPointCnt = 0;
-        boolean checkZeroCntIdx = false;
-        for (int i = minPoint; i <= maxPoint; i++) {
-            if (line[i] >= 2) {
-                minPointEndPoint = i;
-                break;
+        int minDistance = Integer.MAX_VALUE;
+        for (int i = 0; i < n; i++) {
+            
+            int[] copyedLine = Arrays.copyOfRange(line, 0, line.length);
+            for (int j = arrX1[i]; j <= arrX2[i]; j++) {
+                copyedLine[j] -= 1;
             }
-            if (line[i] == 0) {
-                checkZeroCntIdx = true;
-                continue;
-            }
-            if (checkZeroCntIdx && line[i] != 0) {
-                minPointEndPoint = i;
-                break;
-            }
-            minPointCnt++;
-        }
 
-        int maxPointEndPoint = 0;
-        int maxPointCnt = 0;
-        checkZeroCntIdx = false;
-        for (int i = maxPoint; i >= minPoint; i--) {
-            if (line[i] >= 2) {
-                maxPointEndPoint = i;
-                break;
+            int maxPoint = Integer.MIN_VALUE;
+            int minPoint = Integer.MAX_VALUE;
+            for (int j = 0; j <= 100; j++) {
+                if (copyedLine[j] != 0) {
+                    maxPoint = Math.max(maxPoint, j);
+                    minPoint = Math.min(minPoint, j);
+                }
             }
-            if (line[i] == 0) {
-                checkZeroCntIdx = true;
-                continue;
-            }
-            if (checkZeroCntIdx && line[i] != 0) {
-                maxPointEndPoint = i;
-                break;
-            }
-            maxPointCnt++;
+            minDistance = Math.min(minDistance, maxPoint - minPoint);
         }
-        
-        if (maxPointCnt > minPointCnt) {
-            System.out.print(maxPointEndPoint - minPoint);
-        } else {
-            System.out.print(maxPoint - minPointEndPoint);
-        }
+        System.out.print(minDistance);
     }
 }
 
@@ -81,3 +59,6 @@ public class Main {
 // 더 큰 쪽이 삭제되어야 한다. 더 카운트가 큰 쪽의 점을 가진 선을 삭제한다. => 만약 더 큰쪽이 가장 큰점쪽이면 큰점쪽의 카운트가 끊긴점
 // 끊긴점 - 가장작은점 
 // 만약 더 작은쪾이 가장 큰 점 쪾이면, 가장큰점 - 끊긴점
+
+// 선분에 다 표시해놓고, 하나씩 뺀다
+// 빼놓고 가장 긴점과 가장 작은 점을 측정하고, 
