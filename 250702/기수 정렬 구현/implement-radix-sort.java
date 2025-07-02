@@ -12,7 +12,6 @@ public class Main {
             strMaxLen = Math.max(strMaxLen, String.valueOf(arr[i]).length());
         }
             
-
         int[] radixedSortArr = radix_sort(arr, strMaxLen);
 
         for (int i = 0; i < radixedSortArr.length; i++) {
@@ -23,7 +22,7 @@ public class Main {
     public static int[] radix_sort(int[] arr, int strMaxLen) {
         
         // 마지막 자리수부터 올라가면서 기수정렬을 한다.
-        for (int pos = strMaxLen-1; pos >= 0; pos--) {
+        for (int minus_pos = 0; minus_pos < strMaxLen; minus_pos++) {
             ArrayList<Integer>[] sortedArrByDigit = new ArrayList[10];
             for (int i = 0; i < 10; i++) {
                 sortedArrByDigit[i] = new ArrayList<Integer>();
@@ -32,12 +31,8 @@ public class Main {
             for (int i = 0; i < arr.length; i++) {
                 String strArrI = String.valueOf(arr[i]);
 
-                int arrI_posDigitValue = -1;
-                if (strArrI.length() < strMaxLen) {
-                    arrI_posDigitValue = 0;
-                } else {
-                    arrI_posDigitValue = Character.getNumericValue(strArrI.charAt(pos));
-                }
+                int strArrI_pos = strArrI.length()-1 - minus_pos;
+                int arrI_posDigitValue = strArrI_pos >= 0 ? Character.getNumericValue(strArrI.charAt(strArrI_pos)) : 0;
                 sortedArrByDigit[arrI_posDigitValue].add(arr[i]);
             }
 
