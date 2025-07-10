@@ -17,42 +17,42 @@ public class Main {
 
         // ㅡ
         for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n-2; j++) {
+            for (int j = 0; j < m-2; j++) {
                 maxSum = Math.max(maxSum, grid[i][j] + grid[i][j+1] + grid[i][j+2]);
             }
         }
 
         // ㅣ
         for (int i = 0; i < n-2; i++) {
-            for (int j = 0; j < n; j++) {
+            for (int j = 0; j < m; j++) {
                 maxSum = Math.max(maxSum, grid[i][j] + grid[i+1][j] + grid[i+2][j]);
             }
         }
 
         // J
         for (int i = 0; i < n-1; i++) {
-            for (int j = 1; j < n; j++) {
+            for (int j = 1; j < m; j++) {
                 maxSum = Math.max(maxSum, grid[i][j] + grid[i+1][j] + grid[i+1][j-1]);
             }
         }
 
         // ㄴ
         for (int i = 0; i < n-1; i++) {
-            for (int j = 0; j < n-1; j++) {
+            for (int j = 0; j < m-1; j++) {
                 maxSum = Math.max(maxSum, grid[i][j] + grid[i+1][j] + grid[i+1][j+1]);
             }
         }
 
         // ㄱ
         for (int i = 0; i < n-1; i++) {
-            for (int j = 0; j < n-1; j++) {
+            for (int j = 0; j < m-1; j++) {
                 maxSum = Math.max(maxSum, grid[i][j] + grid[i][j+1] + grid[i+1][j+1]);
             }
         }
 
         // r
         for (int i = 0; i < n-1; i++) {
-            for (int j = 0; j < n-1; j++) {
+            for (int j = 0; j < m-1; j++) {
                 maxSum = Math.max(maxSum, grid[i][j] + grid[i][j+1] + grid[i+1][j]);
             }
         }
