@@ -11,19 +11,17 @@ public class Main {
                 grid[i][j] = sc.nextInt();
         // Please write your code here.
 
-        int maxTotalVal = Integer.MIN_VALUE;
-        int possibleMaxGoldCnt = Integer.MIN_VALUE;
+        int possibleMaxGoldCnt = 0;
 
         // 중심점을 고른다.
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
 
-                for (int k = 0; k < n; k++) {
+                for (int k = 0; k < 2*n; k++) {
                     // 넘어가지 않는 경우에 한해서 채굴한 금의 값을 합한다. 비용도 합한다.
                     int goldValSum = 0;
                     int goldCnt = 0;
-                    int cost = 0;
-                    int totalVal = goldValSum - cost;
+                    int totalVal = 0;
 
                     // 마름모 길이가 0이라 중심점 자체가 마름모인 경우
                     if (k == 0) {
@@ -31,11 +29,10 @@ public class Main {
                             goldValSum += M;
                             goldCnt = 1;
                         }
-                        cost = 1;
-                        totalVal = goldValSum - cost;
 
-                        if (totalVal >= maxTotalVal) {
-                            maxTotalVal = Math.max(maxTotalVal, totalVal);
+                        totalVal = goldValSum - 1;
+
+                        if (totalVal >= 0) {
                             possibleMaxGoldCnt = Math.max(possibleMaxGoldCnt, goldCnt);
                         }
 
@@ -43,44 +40,19 @@ public class Main {
                     }
 
                     // 네모 탐색
-                    for (int a = i-(k-1); a <= i+(k-1); a++) {
-                        for (int b = j-(k-1);  b <= j+(k-1); b++) {
-                            if (a >= n || b >= n || a < 0 || b < 0) continue;
-                            if (grid[a][b] == 1) {
+                    for (int a = 0; a < n; a++) {
+                        for (int b = 0;  b < n; b++) {
+                            if (Math.abs(i-a) + Math.abs(j-b) <= k && grid[a][b]==1) {
                                 goldValSum += M;
                                 goldCnt++;
                             }
-                            cost++;
                         }
-                    }
-
-                    // 마름모의 꼭지점을 더한다.
-                    if ((i+k < n && j < n) && (i+k >= 0 && j >= 0) && grid[i+k][j] == 1) {
-                        goldValSum += M;
-                        cost++;
-                        goldCnt++;
-                    }
-                    if ((i < n && j-k < n) && (i >= 0 && j-k >= 0) && grid[i][j-k] == 1) {
-                        goldValSum += M;
-                        cost++;
-                        goldCnt++;
-                    }
-                    if ((i-k < n && j < n) && (i-k >= 0 && j >= 0) && grid[i-k][j] == 1) {
-                        goldValSum += M;
-                        cost++;
-                        goldCnt++;
-                    }
-                    if ((i < n && j+k < n) && (i >= 0 && j+k >= 0) && grid[i][j+k] == 1) {
-                        goldValSum += M;
-                        cost++;
-                        goldCnt++;
                     }
 
                     // 새로 구한 토탈밸류 값이 지금까지 구한 토탈밸류보다 크거나 같다면(골드 수가 달라질 수 있으므로)
                     // 토탈밸류와 최대골드수를 최댓값 갱신
-                    totalVal = goldValSum - cost;
-                    if (totalVal >= maxTotalVal) {
-                        maxTotalVal = Math.max(maxTotalVal, totalVal);
+                    totalVal = goldValSum - (int)(Math.pow(k, 2) + Math.pow(k+1, 2));
+                    if (totalVal >= 0) {
                         possibleMaxGoldCnt = Math.max(possibleMaxGoldCnt, goldCnt);
                     }
                 }
@@ -102,4 +74,9 @@ public class Main {
 // k 0일땐 cost도 1, 해당 칸의 수만을 구하고 넘어간다. 
 // i-(k-1) ~ i+(k-1) , j-(k-1) ~ j+(k-1) 만큼 네모를 탐색한다. 
 // 이후 i+k j , i j-k , i-k j , i j+k 를 더한다. 
+// 
+
+// 네모 만들기 -> bfs로 k만큼 움직이기
+// bfs 그래프를 만든다. (grid와 똑같은 크기)
+// k를 bfs그래프의 중심점에 넣는다. 
 // 
