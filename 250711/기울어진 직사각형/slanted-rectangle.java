@@ -22,7 +22,7 @@ public class Main {
                         int curX = i;
                         int curY = j;
 
-                        for (int c = 1; c < a; c++) {
+                        for (int c = 1; c <= a; c++) {
                             curX--;
                             curY++;
 
@@ -34,7 +34,7 @@ public class Main {
 
                         }
 
-                        for (int d = 1; d < b; d++) {
+                        for (int d = 1; d <= b; d++) {
                             curX--;
                             curY--;  
 
@@ -45,7 +45,7 @@ public class Main {
                             sum += grid[curX][curY];
                         }
 
-                        for (int c = 1; c < a; c++) {
+                        for (int c = 1; c <= a; c++) {
                             curX++;
                             curY--;
 
@@ -56,7 +56,7 @@ public class Main {
                             sum += grid[curX][curY];
                         }
 
-                        for (int d = 1; d < b; d++) {
+                        for (int d = 1; d <= b; d++) {
                             curX++;
                             curY++; 
 
