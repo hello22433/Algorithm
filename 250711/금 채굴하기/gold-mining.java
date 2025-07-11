@@ -29,9 +29,9 @@ public class Main {
                     if (k == 0) {
                         if (grid[i][j] == 1) {
                             goldValSum += M;
+                            goldCnt = 1;
                         }
                         cost = 1;
-                        goldCnt = 1;
                         totalVal = goldValSum - cost;
 
                         if (totalVal >= maxTotalVal) {
