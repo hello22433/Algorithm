@@ -21,7 +21,7 @@ public class Main {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
 
-                for (int k = 0; k < n; k++) {
+                for (int k = 0; k < n*2; k++) {
                     // 넘어가지 않는 경우에 한해서 채굴한 금의 값을 합한다. 비용도 합한다.
                     goldValSum = 0;
                     goldCnt = 0;
