@@ -13,33 +13,20 @@ public class Main {
 
         int possibleMaxGoldCnt = 0;
 
+        int goldValSum = 0;
+        int goldCnt = 0;
+        int totalVal = 0;
+
         // 중심점을 고른다.
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
 
-                for (int k = 0; k < 2*n; k++) {
+                for (int k = 0; k < n; k++) {
                     // 넘어가지 않는 경우에 한해서 채굴한 금의 값을 합한다. 비용도 합한다.
-                    int goldValSum = 0;
-                    int goldCnt = 0;
-                    int totalVal = 0;
+                    goldValSum = 0;
+                    goldCnt = 0;
 
-                    // 마름모 길이가 0이라 중심점 자체가 마름모인 경우
-                    if (k == 0) {
-                        if (grid[i][j] == 1) {
-                            goldValSum += M;
-                            goldCnt = 1;
-                        }
-
-                        totalVal = goldValSum - 1;
-
-                        if (totalVal >= 0) {
-                            possibleMaxGoldCnt = Math.max(possibleMaxGoldCnt, goldCnt);
-                        }
-
-                        continue;
-                    }
-
-                    // 네모 탐색
+                    // 마름모 탐색
                     for (int a = 0; a < n; a++) {
                         for (int b = 0;  b < n; b++) {
                             if (Math.abs(i-a) + Math.abs(j-b) <= k && grid[a][b]==1) {
