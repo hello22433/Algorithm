@@ -15,9 +15,9 @@ public class Main {
         int maxValueSum = Integer.MIN_VALUE;
 
         for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
+            for (int j = 0; j < m; j++) {
                 for (int k = i; k < n; k++) {
-                    for (int l = j; l < n; l++) {
+                    for (int l = j; l < m; l++) {
 
                         // 첫번째 직사각형 넓이
                         int firstSquareValueSum = 0;
@@ -31,9 +31,9 @@ public class Main {
 
                         // 두번째 직사각형의 두 점
                         for (int a = 0; a < n; a++) {
-                            for (int b = 0; b < n; b++) {
+                            for (int b = 0; b < m; b++) {
                                 for (int c = a; c < n; c++) {
-                                    for (int d = b; d < n; d++) {
+                                    for (int d = b; d < m; d++) {
                                         if (a <= k && b <= l) continue;
                                         
                                         // 두번째 직사각형 넓이
