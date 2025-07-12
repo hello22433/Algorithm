@@ -10,7 +10,7 @@ public class Main {
                 grid[i][j] = sc.nextInt();
         // Please write your code here.
 
-        int maxSize = 0;
+        int maxSize = -1;
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
