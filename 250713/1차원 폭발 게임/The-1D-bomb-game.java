@@ -14,6 +14,8 @@ public class Main {
         boolean existBooms = true;
 
         outer : while (existBooms) {
+            existBooms = false;
+
             int firstBombVal = bombs[0];
             int equalCnt = 1;
             int startIdx = 0;
@@ -33,19 +35,18 @@ public class Main {
                             bombs[j] = bucket[j];
                         }
 
-                        continue outer;
-                    } else {
-                        firstBombVal = bombs[i];
-                        equalCnt = 1;
-                        startIdx = i;
+                        existBooms = true;
                     }
+                
+                    firstBombVal = bombs[i];
+                    equalCnt = 1;
+                    startIdx = i;
+                    
                 } else {
                     equalCnt++;
                 }
 
             }
-
-            existBooms = false;
         }
 
 
