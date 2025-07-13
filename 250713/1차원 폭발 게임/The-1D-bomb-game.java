@@ -24,19 +24,18 @@ public class Main {
                 if (firstBombVal != bombs[i]) {
 
                     if (equalCnt >= m) {
-                        // 터뜨리고 중력으로 내린다.
-                        int[] bucket = new int[n];
-                        int bucketIdx = 0;
-                        for (int j = 0; j < n; j++) {
-                            if ((j < startIdx || j > i-1) && bombs[j] != 0)
-                            bucket[bucketIdx++] = bombs[j];
+                        // 중복되는 부분 0으로 만든다.
+                        for (int j = startIdx; j < i; j++) {
+                            bombs[j] = 0;
                         }
-                        for (int j = 0; j < n; j++) {
-                            bombs[j] = bucket[j];
-                        }
-
                         existBooms = true;
                     }
+
+                    // 배열 확인용
+                    // for (int j = 0; j < n; j++) {
+                    //     System.out.println(bombs[j]);
+                    // }
+                    //     System.out.println();
                 
                     firstBombVal = bombs[i];
                     equalCnt = 1;
@@ -45,7 +44,25 @@ public class Main {
                 } else {
                     equalCnt++;
                 }
+            }
 
+            // 마지막은 따로 처리
+            if (equalCnt >= m) {
+                // 중복되는 부분 0으로 만든다.
+                for (int i = startIdx; i < n; i++) {
+                    bombs[i] = 0;
+                }
+            }
+
+            // 0으로 만든 부분들 동시에 다 터뜨리고 중력으로 내림
+            int[] bucket = new int[n];
+            int bucketIdx = 0;
+            for (int i = 0; i < n; i++) {
+                if (bombs[i] != 0)
+                bucket[bucketIdx++] = bombs[i];
+            }
+            for (int i = 0; i < n; i++) {
+                bombs[i] = bucket[i];
             }
         }
 
