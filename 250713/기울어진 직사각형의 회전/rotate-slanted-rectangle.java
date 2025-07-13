@@ -19,26 +19,79 @@ public class Main {
 
         int curX = r-1;
         int curY = c-1;
+        List<Integer> list = new ArrayList<>();
         if (dir == 0) { // 반시계
-            List<Integer> list = new ArrayList<>();
             for (int t = 0; t < m1; t++) {
-                list.add(grid[curX][curY]);
-                curX--;
-                curY++;
+                list.add(grid[--curX][++curY]);
             }
-            for (int t = 0; t < m1; t++) {
-                list.add(grid[curX][curY]);
-                curX--;
-                curY++;
+            for (int t = 0; t < m2; t++) {
+                list.add(grid[--curX][--curY]);
             }
+            for (int t = 0; t < m3; t++) {
+                list.add(grid[++curX][--curY]);
+            }
+            for (int t = 0; t < m4; t++) {
+                list.add(grid[++curX][++curY]);
+            }
+
+            Collections.rotate(list, 1);
+
+            curX = r-1;
+            curY = c-1;
+            int listIdx = 0;
+
             for (int t = 0; t < m1; t++) {
-                list.add(grid[curX][curY]);
-                curX--;
-                curY++;
+                grid[--curX][++curY] = list.get(listIdx++);
+            }
+            for (int t = 0; t < m2; t++) {
+                grid[--curX][--curY] = list.get(listIdx++);
+            }
+            for (int t = 0; t < m3; t++) {
+                grid[++curX][--curY] = list.get(listIdx++);;
+            }
+            for (int t = 0; t < m4; t++) {
+                grid[++curX][++curY] = list.get(listIdx++);;
             }
 
         } else { // 시계
+            for (int t = 0; t < m4; t++) {
+                list.add(grid[--curX][--curY]);
+            }
+            for (int t = 0; t < m3; t++) {
+                list.add(grid[--curX][++curY]);
+            }
+            for (int t = 0; t < m2; t++) {
+                list.add(grid[++curX][++curY]);
+            }
+            for (int t = 0; t < m1; t++) {
+                list.add(grid[++curX][--curY]);
+            }
 
+            Collections.rotate(list, 1);
+
+            curX = r-1;
+            curY = c-1;
+            int listIdx = 0;
+
+            for (int t = 0; t < m4; t++) {
+                grid[--curX][--curY] = list.get(listIdx++);
+            }
+            for (int t = 0; t < m3; t++) {
+                grid[--curX][++curY] = list.get(listIdx++);
+            }
+            for (int t = 0; t < m2; t++) {
+                grid[++curX][++curY] = list.get(listIdx++);;
+            }
+            for (int t = 0; t < m1; t++) {
+                grid[++curX][--curY] = list.get(listIdx++);;
+            }
+        }
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+               System.out.print(grid[i][j] + " ");
+            }
+            System.out.println();
         }
     }
 }
