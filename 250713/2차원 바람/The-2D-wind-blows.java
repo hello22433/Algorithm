@@ -24,8 +24,6 @@ public class Main {
 
         for (int i = 0; i < q; i++) {
 
-            
-
             int startXIdx = queries[i][0];
             int startYIdx = queries[i][1];
             int endXIdx = queries[i][2];
@@ -42,35 +40,54 @@ public class Main {
             // 오른쪽으로 민다.
             // 반대로 껍데기에 배열을 넣는다. 
 
-            int lastValX = building[startXIdx][endYIdx];
-            for (int a = endYIdx; a > startYIdx; a--) {
-                building[startXIdx][a] = building[startXIdx][a-1];
-                averMap[startXIdx][a] = averMap[startXIdx][a-1];
-            }
-            building[startXIdx][startYIdx] = building[startXIdx+1][startYIdx];
-            averMap[startXIdx][startYIdx] = averMap[startXIdx+1][startYIdx];
+            // int lastValX = building[startXIdx][endYIdx];
+            // for (int a = endYIdx; a > startYIdx; a--) {
+            //     building[startXIdx][a] = building[startXIdx][a-1];
+            //     averMap[startXIdx][a] = averMap[startXIdx][a-1];
+            // }
+            // building[startXIdx][startYIdx] = building[startXIdx+1][startYIdx];
+            // averMap[startXIdx][startYIdx] = averMap[startXIdx+1][startYIdx];
 
-            int lastValY = building[endXIdx][endYIdx];
-            for (int a = endXIdx; a > startXIdx+1; a--) {
-                building[a][endYIdx] = building[a-1][endYIdx];
-                averMap[a][endYIdx] = averMap[a-1][endYIdx];
-            }
-            building[startXIdx+1][endYIdx] = lastValX;
-            averMap[startXIdx+1][endYIdx] = lastValX;
+            // int lastValY = building[endXIdx][endYIdx];
+            // for (int a = endXIdx; a > startXIdx+1; a--) {
+            //     building[a][endYIdx] = building[a-1][endYIdx];
+            //     averMap[a][endYIdx] = averMap[a-1][endYIdx];
+            // }
+            // building[startXIdx+1][endYIdx] = lastValX;
+            // averMap[startXIdx+1][endYIdx] = lastValX;
 
-            lastValX = building[endXIdx][startYIdx];
-            for (int a = startYIdx; a < endYIdx-1; a++) {
-                building[endXIdx][a] = building[endXIdx][a+1];
-                averMap[endXIdx][a] = averMap[endXIdx][a+1];
-            }
-            building[endXIdx][endYIdx-1] = lastValY;
-            averMap[endXIdx][endYIdx-1] = lastValY;
+            // lastValX = building[endXIdx][startYIdx];
+            // for (int a = startYIdx; a < endYIdx-1; a++) {
+            //     building[endXIdx][a] = building[endXIdx][a+1];
+            //     averMap[endXIdx][a] = averMap[endXIdx][a+1];
+            // }
+            // building[endXIdx][endYIdx-1] = lastValY;
+            // averMap[endXIdx][endYIdx-1] = lastValY;
 
-            building[endXIdx-1][startYIdx] = lastValX;
-            for (int a = startXIdx+1; a < endXIdx-1; a++) {
-                building[a][startYIdx] = building[a+1][startYIdx];
-                averMap[a][startYIdx] = averMap[a+1][startYIdx];
-            }
+            // building[endXIdx-1][startYIdx] = lastValX;
+            // for (int a = startXIdx+1; a < endXIdx-1; a++) {
+            //     building[a][startYIdx] = building[a+1][startYIdx];
+            //     averMap[a][startYIdx] = averMap[a+1][startYIdx];
+            // }
+
+            // 리스트 선언
+            List<Integer> list = new ArrayList<>();
+            // 시계방향(위오아왼)으로 리스트로 불러온다
+            for (int y = startYIdx; y < endYIdx; y++) list.add(building[startXIdx][y]);
+            for (int x = startXIdx; x < endXIdx; x++) list.add(building[x][endYIdx]);
+            for (int y = endYIdx; y > startYIdx; y--) list.add(building[endXIdx][y]);
+            for (int x = endXIdx; x > startXIdx; x--) list.add(building[x][startYIdx]);
+
+            Collections.rotate(list, 1);
+
+            int listIdx = 0;
+            for (int y = startYIdx; y < endYIdx; y++) building[startXIdx][y] = list.get(listIdx++);
+            for (int x = startXIdx; x < endXIdx; x++) building[x][endYIdx] = list.get(listIdx++);
+            for (int y = endYIdx; y > startYIdx; y--) building[endXIdx][y]  = list.get(listIdx++);
+            for (int x = endXIdx; x > startXIdx; x--) building[x][startYIdx] = list.get(listIdx++);
+
+            // 리스트를 시계방향으로 돌린다.
+            // 다시 시계방향에 순서대로 넣는다.
 
 
             for (int a = startXIdx; a <= endXIdx; a++) {
