@@ -33,7 +33,7 @@ public class Main {
                 }
                 if (firstVal != 0) bucket[bucketIdx++] = firstVal;
 
-                for (int j = 1; j < 4; j++) {
+                for (int j = 0; j < 4; j++) {
                     grid[j][i] = bucket[j];
                 }
             }
