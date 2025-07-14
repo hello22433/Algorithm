@@ -15,7 +15,7 @@ public class Main {
 
         for (int t = 0; t < m; t++) {
             int r = -1;
-            int c = bombColsIdxes[0];
+            int c = bombColsIdxes[t];
             
             for (int i = 0; i < n; i++) {
                 if (grid[i][c] != 0) {
