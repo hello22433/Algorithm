@@ -16,13 +16,25 @@ public class Main {
         // Please write your code here.
 
         for (int t = 0; t < k; t++) {
-            removeChainBombs();
-            pullDownBombs();
+            while (true) {
+                boolean exploded = false;;
+                exploded = removeChainBombs();
+                pullDownBombs();
+                if (!exploded) {
+                    break;
+                }
+            }
             rotateBoard();
         }
 
-        removeChainBombs();
-
+        while (true) {
+            boolean exploded = false;;
+            exploded = removeChainBombs();
+            pullDownBombs();
+            if (!exploded) {
+                break;
+            }
+        }
 
         int remainBombs = countRemainBombs();
         System.out.print(remainBombs);
@@ -104,90 +116,95 @@ public class Main {
         }
     }
 
-    public static void removeChainBombs() {
-        while (true) {
-            boolean exploded = false;
-            
-            boolean[][] toExplode = new boolean[n][n];
-
-            for (int i = 0; i < n; i++) {
-                int firstVal = grid[0][i];
-                int cnt = 1;
-                int startIdx = 0;
-                for (int j = 1; j < n; j++) {
-                    if (grid[j][i] != firstVal) {
-                        if (firstVal != 0 && cnt >= m) {
-                            for (int a = startIdx; a < j; a++) {
-                                toExplode[a][i] = true;
-                            }
-                            exploded = true;
-                        }
-                        firstVal = grid[j][i];
-                        cnt = 1;
-                        startIdx = j;
-                    } else {
-                        cnt++;
-                    }
-                }
-                if (firstVal != 0 && cnt >= m) {
-                    for (int a = startIdx; a < n; a++) {
-                        toExplode[a][i] = true;
-                    }
-                    exploded = true;
-                }
-            }
-
-            if (!exploded) break;
-
-            // 실제 폭파
-            for (int i = 0; i < n; i++) {
-                for (int j = 0; j < n; j++) {
-                    if (toExplode[i][j]) {
-                        grid[i][j] = 0;
-                    }
-                }
-            }
-
-            pullDownBombs(); // 연쇄 반응을 위해 중력 적용
-        }
-    }
-
     // public static void removeChainBombs() {
-    //     // 열을 순회한다.
-    //     for (int i = 0; i < n; i++) {
+    //     while (true) {
+    //         boolean exploded = false;
             
-    //         // 행마다 연속되는 폭탄이 있는지 찾는다.
-    //         // 처음 수를 지정하고, 같은 폭탄이 나올 때마다 카운트한다. (초기값 1) , 동시에 시작 인덱스도 저장한다.
-    //         int firstVal = grid[0][i];
-    //         int cnt = 1;
-    //         int startIdx = 0;
-    //         // 어차피 0으로 만들 것이기에 처음수가 0이어도 상관없음.
-    //         // 처음저장한 수와 다른 수가 나왔는데 카운트가 m이상이면 0으로 만들 것이다.(if문으로 실행)
-    //         // 아니라면 그냥 넘어가면 된다. 
-    //         for (int j = 1; j < n; j++) {
-    //             if (grid[j][i] != firstVal) {
-    //                 if (cnt >= m) {
-    //                     for (int a = startIdx; a < j; a++) {
-    //                         grid[a][i] = 0;
+    //         boolean[][] toExplode = new boolean[n][n];
+
+    //         for (int i = 0; i < n; i++) {
+    //             int firstVal = grid[0][i];
+    //             int cnt = 1;
+    //             int startIdx = 0;
+    //             for (int j = 1; j < n; j++) {
+    //                 if (grid[j][i] != firstVal) {
+    //                     if (firstVal != 0 && cnt >= m) {
+    //                         for (int a = startIdx; a < j; a++) {
+    //                             toExplode[a][i] = true;
+    //                         }
+    //                         exploded = true;
     //                     }
+    //                     firstVal = grid[j][i];
+    //                     cnt = 1;
+    //                     startIdx = j;
+    //                 } else {
+    //                     cnt++;
     //                 }
-
-    //                 firstVal = grid[j][i];
-    //                 cnt = 1;
-    //                 startIdx = j;
-    //             } else {
-    //                 cnt++;
+    //             }
+    //             if (firstVal != 0 && cnt >= m) {
+    //                 for (int a = startIdx; a < n; a++) {
+    //                     toExplode[a][i] = true;
+    //                 }
+    //                 exploded = true;
     //             }
     //         }
 
-    //         // 반복문이 모두 끝나고 카운트가 m이상이면 startIdx부터 n-1까지 모두 0으로 만든다.
-    //         if (cnt >= m) {
-    //             for (int a = startIdx; a < n; a++) {
-    //                 grid[a][i] = 0;
+    //         if (!exploded) break;
+
+    //         // 실제 폭파
+    //         for (int i = 0; i < n; i++) {
+    //             for (int j = 0; j < n; j++) {
+    //                 if (toExplode[i][j]) {
+    //                     grid[i][j] = 0;
+    //                 }
     //             }
     //         }
+
+    //         pullDownBombs(); // 연쇄 반응을 위해 중력 적용
     //     }
     // }
+
+    public static boolean removeChainBombs() {
+        // 열을 순회한다.
+        boolean exploded = false;
+        for (int i = 0; i < n; i++) {
+            
+            // 행마다 연속되는 폭탄이 있는지 찾는다.
+            // 처음 수를 지정하고, 같은 폭탄이 나올 때마다 카운트한다. (초기값 1) , 동시에 시작 인덱스도 저장한다.
+            int firstVal = grid[0][i];
+            int cnt = 1;
+            int startIdx = 0;
+            // 어차피 0으로 만들 것이기에 처음수가 0이어도 상관없음.
+            // 처음저장한 수와 다른 수가 나왔는데 카운트가 m이상이면 0으로 만들 것이다.(if문으로 실행)
+            // 아니라면 그냥 넘어가면 된다. 
+            for (int j = 1; j < n; j++) {
+                if (grid[j][i] != firstVal) {
+                    if (cnt >= m) {
+                        if (firstVal != 0) exploded = true;
+
+                        for (int a = startIdx; a < j; a++) {
+                            grid[a][i] = 0;
+                        }
+                    }
+
+                    firstVal = grid[j][i];
+                    cnt = 1;
+                    startIdx = j;
+                } else {
+                    cnt++;
+                }
+            }
+
+            // 반복문이 모두 끝나고 카운트가 m이상이면 startIdx부터 n-1까지 모두 0으로 만든다.
+            if (cnt >= m) {
+                if (firstVal != 0) exploded = true;
+                for (int a = startIdx; a < n; a++) {
+                    grid[a][i] = 0;
+                }
+            }
+        }
+        return exploded;
+    }
 }
 
 // K번 : (탐색 -> 터뜨림) -> 내림 -> 돌림 -> 내림 -> (탐색 -> 터뜨림) -> ...
