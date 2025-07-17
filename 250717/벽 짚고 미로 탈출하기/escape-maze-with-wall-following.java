@@ -24,6 +24,10 @@ public class Main {
         int cnt = 0;
 
         outer: while (true) {
+            if (visited[x][y]) {
+                System.out.print(-1);
+                return;
+            }
             visited[x][y] = true;
             
             if (curDir == 'R') {
