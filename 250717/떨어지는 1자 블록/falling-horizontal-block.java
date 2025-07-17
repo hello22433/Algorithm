@@ -13,7 +13,7 @@ public class Main {
         }
         // Please write your code here.
 
-        int hang = 1;
+        int hang = 0;
         outer: for (int i = 1; i < n; i++) {
             for (int j = k; j <= k+m-1; j++) {
                 if (grid[i][j] == 1) {
