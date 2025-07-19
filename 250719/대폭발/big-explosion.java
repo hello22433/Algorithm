@@ -37,16 +37,16 @@ public class Main {
 
             for (int i = 0; i < qSize; i++) {
                 // 폭탄은 남아서 계속 터지기 때문
-                q.offer(new int[]{x,y});
                 int[] poller = q.poll();
                 int curX = poller[0];
                 int curY = poller[1];
+                q.offer(new int[]{curX,curY});
             
                 for (int j = 0; j < 4; j++) {
                     int nx = curX + dx[j] * (int)Math.pow(2, t-1);
                     int ny = curY + dy[j] * (int)Math.pow(2, t-1);
                     
-                    if (inBount(nx, ny)) {
+                    if (inBound(nx, ny)) {
                         board[nx][ny] = 1;
                         q.add(new int[]{nx, ny});
                     }
@@ -55,7 +55,7 @@ public class Main {
         }
     }
 
-    public static boolean inBount(int x, int y) {
+    public static boolean inBound(int x, int y) {
         if (x >= 0 && x < n && y >= 0 && y < n) return true;
         return false;
     }
