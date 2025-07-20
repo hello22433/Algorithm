@@ -89,12 +89,14 @@ public class Main {
     public static void moveMarble(int x , int y) {
         
         int maxValue = findMaxValue(x, y);
+
         for (int i = 0; i < 4; i++) {
             int nx = x + dx[i];
             int ny = y + dy[i];
 
             if (isInBound(nx, ny) && grid[nx][ny] == maxValue) {
                 nextCntMarblesOnGrid[nx][ny] += 1;
+                return;
             }
         }
     }
