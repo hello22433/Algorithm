@@ -23,6 +23,9 @@ public class Main {
             board[x][y] = 1;
         }
 
+        // 00xx
+        // 00xx // 움직이는 행위를 먼저 하고 -> 그 위치에 아직 꼬리가 남아있는지를 체크해야 함.
+
         dirInfo = new char[k];
         dirHowMuchInfo = new int[k];
         for (int i = 0; i < k; i++) {
@@ -46,7 +49,7 @@ public class Main {
         board[x][y] = 2;
 
         Deque<int[]> snake = new LinkedList<>();
-        snake.addLast(new int[]{0, 0});
+        snake.addLast(new int[]{x, y});
 
         for (int i = 0; i < k; i++) {
             if (dirInfo[i] == 'R') dir = 0;
@@ -62,8 +65,9 @@ public class Main {
                 int nx = x + dx[dir];
                 int ny = y + dy[dir];
 
-                // 이동하는 위치에 뱀이 있거나, 아웃바운드면 타임을 리턴한다.
-                if (!inBound(nx, ny) || board[nx][ny] == 2) {
+                // 아웃바운드면 타임을 리턴한다. 
+                // 이동하는 위치에 뱀이 있는 경우는, 움직인 후에 고려해야 한다.
+                if (!inBound(nx, ny)) {
                     return spentTime;
                 }
 
@@ -72,11 +76,20 @@ public class Main {
                 x = nx;
                 y = ny;
                 int isLingo = board[x][y];
-                board[x][y] = 2;
+                board[x][y] += 2;
                 snake.addFirst(new int[]{x,y});
+
+                int[] lastTail = snake.peekLast();
                 if (isLingo != 1) {
                     int[] lingoXY = snake.pollLast();
-                    board[lingoXY[0]][lingoXY[1]] = 0;
+                    board[lingoXY[0]][lingoXY[1]] -= 2;
+                } else {
+                    board[x][y] -= 1;
+                }
+
+                // 사과를 먹는 것까지 고려하였는데 만약, 꼬리가 있다면 부딪힘.
+                if (board[x][y] > 2) {
+                    return spentTime;
                 }
             }
         }
