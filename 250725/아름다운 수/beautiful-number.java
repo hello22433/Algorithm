@@ -10,8 +10,26 @@ public class Main {
         n = sc.nextInt();
         arr = new int[n];
 
-        dfs(0);
+        // dfs(0);
+        dfs2(0);
         System.out.print(cnt);
+    }
+
+    public static void dfs2(int currentLength) {
+        if (currentLength == n) {
+            
+            cnt++;
+
+            return;
+        }
+
+        for (int i = 1; i <= 4; i++) {
+            int nextLength = currentLength + i;
+
+            if (nextLength <= n) {
+                dfs2(nextLength);
+            }
+        }
     }
 
     public static void dfs(int depth) {
