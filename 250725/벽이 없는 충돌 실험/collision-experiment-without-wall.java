@@ -24,10 +24,10 @@ public class Main {
 
             for (int i = 1; i <= n; i++) {
                 int num = i;
-                // int x = (sc.nextInt() + 1000) * 2;
-                // int y = (sc.nextInt() + 1000) * 2; 
-                int x = sc.nextInt()*2; 
-                int y = sc.nextInt()*2; 
+                int x = (sc.nextInt() + 1000) * 2;
+                int y = (sc.nextInt() + 1000) * 2; 
+                // int x = sc.nextInt()*2; 
+                // int y = sc.nextInt()*2; 
                 int w = sc.nextInt();
                 char d = sc.next().charAt(0);
                 int dir = -1;
