@@ -49,7 +49,7 @@ public class Main {
     public static void simulateBeadMoves() {
         int spentTime = 0;
 
-        while (spentTime < 2001) {
+        while (spentTime < 4001) {
             nextMap = new HashMap<>();
 
             int qSize = beadXY.size();
