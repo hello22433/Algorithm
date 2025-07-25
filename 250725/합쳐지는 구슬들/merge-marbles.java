@@ -112,10 +112,18 @@ public class Main {
                 nextBoard[nx][ny] = bead;
             }
         } else {
-            nextBoard[x][y] = new Bead((bead.d+2)%4, bead.w, bead.num);
-        }
+            if (nextBoard[x][y] != null) {
+                Bead existedBead = nextBoard[x][y];
 
-        
+                if (existedBead.num < bead.num) {
+                    nextBoard[x][y] = new Bead((bead.d+2)%4, existedBead.w + bead.w, bead.num);
+                    } else {
+                        nextBoard[x][y] = new Bead(existedBead.d, existedBead.w + bead.w, existedBead.num);
+                } 
+            } else {
+                nextBoard[x][y] = new Bead((bead.d+2)%4, bead.w, bead.num);
+            }
+        }
     }
 
     public static boolean inBound(int x ,int y) {
