@@ -23,10 +23,10 @@ public class Main {
 
             for (int i = 1; i <= n; i++) {
                 int num = i;
-                // int x = (sc.nextInt() + 1000) * 2;
-                // int y = (sc.nextInt() + 1000) * 2; 
-                int x = sc.nextInt()*2; 
-                int y = sc.nextInt()*2; 
+                int x = (sc.nextInt() + 1000) * 2;
+                int y = (sc.nextInt() + 1000) * 2; 
+                // int x = sc.nextInt()*2; 
+                // int y = sc.nextInt()*2; 
                 int w = sc.nextInt();
                 char d = sc.next().charAt(0);
                 int dir = -1;
@@ -49,8 +49,7 @@ public class Main {
     public static void simulateBeadMoves() {
         int spentTime = 0;
 
-        while (spentTime < 4001) {
-            if (beadXY.isEmpty()) break;
+        while (spentTime < 4001 && !beadXY.isEmpty()) {
             nextMap = new HashMap<>();
 
             int qSize = beadXY.size();
@@ -68,6 +67,11 @@ public class Main {
 
                 int nx = x + dx[dir];
                 int ny = y + dy[dir];
+
+                // 필드 범위 바깥이면 버림 (구슬 제거)
+                if (nx < 0 || nx > 4000 || ny < 0 || ny > 4000) {
+                    continue;
+                }
                 
                 String newKey = nx + "," + ny;
 
