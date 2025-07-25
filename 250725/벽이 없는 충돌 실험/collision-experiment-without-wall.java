@@ -50,6 +50,7 @@ public class Main {
         int spentTime = 0;
 
         while (spentTime < 4001) {
+            if (beadXY.isEmpty()) break;
             nextMap = new HashMap<>();
 
             int qSize = beadXY.size();
