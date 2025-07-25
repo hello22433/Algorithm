@@ -2,31 +2,64 @@ import java.util.*;
 
 public class Main {
     static int maxCnt = 0;
+    static List<int[]> lines;
+    static int[][] segments;
+    static int n;
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int[][] segments = new int[n][2];
+        n = sc.nextInt();
+        segments = new int[n][2];
         for (int i = 0; i < n; i++) {
             segments[i][0] = sc.nextInt();
             segments[i][1] = sc.nextInt();
         }
         // Please write your code here.
 
-        Arrays.sort(segments, (a,b) -> {
-            return a[1] - b[1];
-        });
+        lines = new ArrayList<>();
 
-        int curEndPoint = segments[0][1];
-        int cnt = 1;
+        dfs(0);
+        System.out.print(maxCnt);
+    }
 
-        for (int i = 1; i < n; i++) {
-            if (segments[i][0] > curEndPoint) {
-                cnt++;
-                curEndPoint = segments[i][1];
+    public static boolean overlapped(int one, int two) {
+        int[] a = lines.get(one);
+        int[] b = lines.get(two);
+
+        int a1 = a[0];
+        int a2 = a[1];
+        int b1 = b[0];
+        int b2 = b[1];
+
+        if ((a1 >= b1 && a1 <= b2) || (a2 >= b1 && a2 <= b2)
+            || (b1 >= a1 && b2 <= a2) || (b2 >= a1 && b2 <= a2)) return true;
+        
+        return false;
+    }
+
+    public static boolean possible() {
+        // 모든 조합의 선분이 겹치는지 체크해야 함.
+        for (int i = 0; i < lines.size(); i++) {
+            for (int j = i+1; j < lines.size(); j++) {
+                if (overlapped(i, j)) return false;
             }
         }
-        System.out.print(cnt);
+        return true;
+    }
+
+    public static void dfs(int depth) {
+        if (depth == n) {
+            if (possible()) {
+                maxCnt = Math.max(maxCnt, lines.size());
+            }
+            return;
+        }
+
+        lines.add(segments[depth]);
+        dfs(depth+1);
+        lines.remove(segments[depth]);
+        dfs(depth+1);
+
     }
 }
 
@@ -45,7 +78,7 @@ public class Main {
 // 또는 A의 끝점이 B의 시작점보다 작아야 한다.  <=> B의 시작점이 A의 끝점보다 커야 한다. 
 
 
-// 몇 개를 고르던, 일단 골랐으면 겹치지 않는 선분이 최대 몇 개인지 체크하고 최대값을 갱신한다.
-// 
-
-// 끝점에 따라 오름차순하고 앞에서부터 고르면 최대값이 아니겠는가?
+// 고르고 안 고르고를 택한다.
+// 골랐던 안 골랐던 하나의 선택이기 때문에, +1 한다.
+// cnt가 n에 달하면 고른 선분이 모두 겹치지 않는지 확인한다.
+// 하나라도 겹치지 아니하면 고른 선분들의 개수로 최대값 갱신한다.
