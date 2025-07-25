@@ -69,6 +69,8 @@ public class Main {
 
                 int nx = x + dx[dir];
                 int ny = y + dy[dir];
+
+                if (nx < 0 || nx > 4000 || ny < 0 || ny > 4000) continue;
                 
                 int newKey = nx * hashCode + ny;
 
