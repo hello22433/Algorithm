@@ -1,250 +1,87 @@
-import java.io.*;
 import java.util.*;
 
-public class Main {
+class Bead {
+    int w, d, id, x, y;
 
-    static int T;
-    static int N;
-    static int[] mapper = new int['Z' + 1];
-    static double[] dx = {-0.5, 0.0, 0.0, 0.5};
-    static double[] dy = {0.0, -0.5, 0.5, 0.0};
-    static List<Gem> gems;
-    static int time;
-    static int lastCrashTime;
-
-    private static void initMapper() {
-        mapper['L'] = 0;
-        mapper['D'] = 1;
-        mapper['U'] = 2;
-        mapper['R'] = 3;
-    }
-
-    static class Coordinate {
-        double x;
-        double y;
-
-        public Coordinate(double x, double y) {
-            this.x = x;
-            this.y = y;
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-
-            Coordinate that = (Coordinate) o;
-
-            if (Double.compare(that.x, x) != 0) return false;
-            return Double.compare(that.y, y) == 0;
-        }
-
-        @Override
-        public int hashCode() {
-            int result;
-            long temp;
-            temp = Double.doubleToLongBits(x);
-            result = (int) (temp ^ (temp >>> 32));
-            temp = Double.doubleToLongBits(y);
-            result = 31 * result + (int) (temp ^ (temp >>> 32));
-            return result;
-        }
-    }
-
-    static class Gem {
-        double x;
-        double y;
-        int number;
-        int direction;
-        int weight;
-
-        Gem(double x, double y, int number, int direction, int weight) {
-            this.x = x;
-            this.y = y;
-            this.number = number;
-            this.direction = direction;
-            this.weight = weight;
-        }
-    }
-
-    public static void main(String[] args) throws Exception {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        StringBuilder sb = new StringBuilder();
-        StringTokenizer st;
-
-        T = Integer.parseInt(br.readLine());
-
-        for (int tc = 0; tc < T; tc++) {
-            N = Integer.parseInt(br.readLine());
-            gems = new ArrayList<>();
-            lastCrashTime = -1;
-            initMapper();
-
-            for (int num = 1; num <= N; num++) {
-                st = new StringTokenizer(br.readLine(), " ");
-
-                double x = Double.parseDouble(st.nextToken());
-                double y = Double.parseDouble(st.nextToken());
-                int w = Integer.parseInt(st.nextToken());
-                int d = mapper[st.nextToken().charAt(0)];
-
-                gems.add(new Gem(x, y, num, d, w));
-            }
-
-            time = 0;
-            while (time++ < 4000) {
-                simulate();
-            }
-            sb.append(lastCrashTime).append("\n");
-        }
-
-        bw.write(sb.toString());
-        bw.close();
-        br.close();
-    }
-
-    private static void simulate() {
-        Map<Coordinate, List<Gem>> map = new HashMap<>();
-        for (Gem gem : gems) {
-            gem.x = gem.x + dx[gem.direction];
-            gem.y = gem.y + dy[gem.direction];
-
-            Coordinate coordinate = new Coordinate(gem.x, gem.y);
-            if (map.containsKey(coordinate)) {
-                map.get(coordinate).add(gem);
-            } else {
-                List<Gem> list = new ArrayList<>();
-                list.add(gem);
-                map.put(coordinate, list);
-            }
-        }
-
-        for (Map.Entry<Coordinate, List<Gem>> entry : map.entrySet()) {
-            if (entry.getValue().size() > 1) {
-                lastCrashTime = time;
-                PriorityQueue<Gem> pq = new PriorityQueue<>((o1, o2) -> {
-                    if (o1.weight == o2.weight) {
-                        return Integer.compare(o2.number, o1.number);
-                    }
-                    return Integer.compare(o2.weight, o1.weight);
-                });
-
-                for (Gem gem : entry.getValue()) {
-                    pq.offer(gem);
-                }
-                pq.poll();
-                while (!pq.isEmpty()) {
-                    gems.remove(pq.poll());
-                }
-            }
-        }
-
+    public Bead(int w, int d, int id, int x, int y) {
+        this.w = w;
+        this.d = d;
+        this.id = id;
+        this.x = x;
+        this.y = y;
     }
 }
 
+public class Main {
+    static final int OFFSET = 2000;
+    static final int LIMIT = 4000;
+    static final int[] dx = {1, 0, -1, 0}; // 우하좌상
+    static final int[] dy = {0, -1, 0, 1};
+    static Map<Integer, Bead> curr = new HashMap<>();
+    static Map<Integer, Bead> next = new HashMap<>();
+    static List<Bead> list = new ArrayList<>();
+    static int t, n, time, lastCrash;
+    static int[] dirMap = new int[128];
 
-// import java.io.*;
-// import java.util.*;
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        dirMap['R'] = 0;
+        dirMap['D'] = 1;
+        dirMap['L'] = 2;
+        dirMap['U'] = 3;
 
-// public class Main {
-//     static int t, n;
+        t = sc.nextInt();
+        while (t-- > 0) {
+            curr.clear();
+            next.clear();
+            list.clear();
+            lastCrash = -1;
+            n = sc.nextInt();
 
-//     // 동 남 서 북 0 1 2 3
-//     static int[] dx = {1, 0, -1, 0};
-//     static int[] dy = {0, -1, 0, 1};
-//     static HashMap<String, Bead> map;
-//     static HashMap<String, Bead> nextMap;
-//     static int lastCrashTime;
-//     static Queue<int[]> beadXY;
+            for (int i = 1; i <= n; i++) {
+                int x = sc.nextInt() * 2 + OFFSET;
+                int y = sc.nextInt() * 2 + OFFSET;
+                int w = sc.nextInt();
+                char d = sc.next().charAt(0);
+                int dir = dirMap[d];
 
-//     public static void main(String[] args) throws IOException {
-//         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-//         StringBuilder output = new StringBuilder();
-//         t = Integer.parseInt(br.readLine());
+                Bead b = new Bead(w, dir, i, x, y);
+                int key = x * 10000 + y;
+                curr.put(key, b);
+            }
 
-//         for (int tc = 0; tc < t; tc++) {
-//             map = new HashMap<>();
-//             lastCrashTime = -1;
-//             beadXY = new LinkedList<>();
+            for (time = 1; time <= LIMIT; time++) {
+                list.clear();
+                list.addAll(curr.values());
+                curr.clear();
+                next.clear();
 
-//             n = Integer.parseInt(br.readLine());
+                for (Bead b : list) {
+                    int nx = b.x + dx[b.d];
+                    int ny = b.y + dy[b.d];
 
-//             for (int i = 1; i <= n; i++) {
-//                 StringTokenizer st = new StringTokenizer(br.readLine());
-//                 int x = (Integer.parseInt(st.nextToken()) + 1000) * 2;
-//                 int y = (Integer.parseInt(st.nextToken()) + 1000) * 2;
-//                 int w = Integer.parseInt(st.nextToken());
-//                 char d = st.nextToken().charAt(0);
+                    if (nx < 0 || nx > LIMIT || ny < 0 || ny > LIMIT) continue;
 
-//                 int dir = -1;
-//                 if (d == 'R') dir = 0;
-//                 else if (d == 'D') dir = 1;
-//                 else if (d == 'L') dir = 2;
-//                 else if (d == 'U') dir = 3;
+                    int key = nx * 10000 + ny;
+                    if (!next.containsKey(key)) {
+                        next.put(key, new Bead(b.w, b.d, b.id, nx, ny));
+                    } else {
+                        Bead ex = next.get(key);
+                        lastCrash = time;
 
-//                 String key = x + "," + y;
-//                 map.put(key, new Bead(i, w, dir));
-//                 beadXY.offer(new int[]{x, y});
-//             }
+                        // 우선순위 결정 (무게 → 번호)
+                        if (ex.w < b.w || (ex.w == b.w && ex.id < b.id)) {
+                            next.put(key, new Bead(b.w, b.d, b.id, nx, ny));
+                        }
+                    }
+                }
 
-//             simulateBeadMoves();
-//             output.append(lastCrashTime).append("\n");
-//         }
+                if (next.isEmpty()) break;
 
-//         System.out.print(output);
-//     }
+                curr.putAll(next);
+            }
 
-//     public static void simulateBeadMoves() {
-//         int spentTime = 0;
-
-//         while (spentTime < 4001 && !beadXY.isEmpty()) {
-//             nextMap = new HashMap<>();
-//             int qSize = beadXY.size();
-//             spentTime++;
-
-//             for (int i = 0; i < qSize; i++) {
-//                 int[] xy = beadXY.poll();
-//                 int x = xy[0], y = xy[1];
-//                 String key = x + "," + y;
-//                 Bead bead = map.get(key);
-//                 if (bead == null) continue;
-
-//                 int dir = bead.dir;
-//                 int nx = x + dx[dir];
-//                 int ny = y + dy[dir];
-
-//                 if (nx < 0 || nx > 4000 || ny < 0 || ny > 4000) continue;
-
-//                 String newKey = nx + "," + ny;
-
-//                 if (nextMap.containsKey(newKey)) {
-//                     lastCrashTime = spentTime;
-//                     Bead existing = nextMap.get(newKey);
-//                     if (existing.w < bead.w) {
-//                         nextMap.put(newKey, bead);
-//                     } else if (existing.w == bead.w && existing.num < bead.num) {
-//                         nextMap.put(newKey, bead);
-//                     }
-//                 } else {
-//                     nextMap.put(newKey, bead);
-//                     beadXY.offer(new int[]{nx, ny});
-//                 }
-//             }
-
-//             map = new HashMap<>(nextMap);
-//         }
-//     }
-// }
-
-// class Bead {
-//     int num;
-//     int w;
-//     int dir;
-
-//     Bead(int num, int w, int dir) {
-//         this.num = num;
-//         this.w = w;
-//         this.dir = dir;
-//     }
-// }
+            System.out.println(lastCrash);
+        }
+    }
+}
