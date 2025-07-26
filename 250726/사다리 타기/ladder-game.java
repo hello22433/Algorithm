@@ -15,7 +15,7 @@ public class Main {
         firstResult = new int[n];
         laddersXY = new int[m][2];
 
-        ladders = new boolean[m][n]; // 사람의 번호로 돌았을 때, 한 자리가 비면 안되므로 n-1대신 n
+        ladders = new boolean[15][n]; // 사람의 번호로 돌았을 때, 한 자리가 비면 안되므로 n-1대신 n
 
         for(int i = 0; i < m; i++){
             int a = sc.nextInt()-1;
@@ -64,7 +64,7 @@ public class Main {
         int curY = startY; // n-2까지
 
         // 0부터 n-1까지 가면서 사다리를 내려간다.
-        for (int x = 0; x < m; x++) {
+        for (int x = 0; x < 15; x++) {
             if (ladders[x][manY]) {
                 manY++;
             } else if (manY-1 >= 0 && ladders[x][manY-1]) {
