@@ -65,9 +65,10 @@ public class Main {
                 for (int a = i; a < n; a++) {
                     for (int b = 0; b < n-m+1; b++) {
                         if (a == i && b == 0) {
-                            b = j + m;
+                            b = j + m - 1;
                             continue;
                         }
+                        
                         maxValue = 0;
                         int twoMaxSumValue = 0 ;
 
