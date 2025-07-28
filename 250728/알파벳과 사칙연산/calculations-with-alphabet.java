@@ -7,7 +7,7 @@ public class Main {
     static String expression;
     static int len;
     static Character[] arr;
-    static int maxVal = 0;
+    static int maxVal = Integer.MIN_VALUE;
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
