@@ -27,8 +27,12 @@ public class Main {
         if (depth == n-1) {
             
             // 마지막 1로 가는 것까지 구현이 되어야 함
-            sumCost += cost[curIdx][0];
-            minCost = Math.min(minCost, sumCost);
+            // System.out.println(curIdx);
+            if (cost[curIdx][0] != 0) {
+                sumCost += cost[curIdx][0];
+                minCost = Math.min(minCost, sumCost);
+            }
+            
             return;
         }
 
