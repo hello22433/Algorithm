@@ -28,20 +28,14 @@ public class Main {
             return;
         }
 
-        for (int i = 0; i < n; i++) {
-            if (visitedX[i]) continue;
+        for (int j = 0; j < n; j++) {
+            if (visitedY[j]) continue;
 
-            visitedX[i] = true;
-            for (int j = 0; j < n; j++) {
-                if (visitedY[j]) continue;
+            visitedY[j] = true;
 
-                visitedY[j] = true;
+            dfs(depth+1, sum+grid[depth][j]);
 
-                dfs(depth+1, sum+grid[i][j]);
-
-                visitedY[j] = false;
-            }
-            visitedX[i] = false;
+            visitedY[j] = false;
         }
     }
 }
