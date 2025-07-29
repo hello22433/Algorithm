@@ -32,7 +32,7 @@ public class Main {
         }
 
         for (int i = 1; i <= arr[curIdx]; i++) {
-            dfs(curIdx + arr[i], jumpCnt+1);
+            dfs(curIdx + i, jumpCnt+1);
         }
     }
 }
