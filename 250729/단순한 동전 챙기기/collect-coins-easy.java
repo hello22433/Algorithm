@@ -79,7 +79,7 @@ public class Main {
             if (!visited[i]) {
                 visited[i] = true;
                 choiceNumsXY[depth] = existedNumber.get(i);
-                dfs(startIdx+1, depth+1);
+                dfs(i+1, depth+1);
                 visited[i] = false;
             }
         }
