@@ -28,23 +28,28 @@ public class Main {
         // Please write your code here.
         
         visited[1] = true;
-        dfs(1, 0);
+        dfs(1);
 
         System.out.print(maxPoints);
     }
 
-    public static void dfs(int point, int link) {
+    public static void dfs(int point) {
+
         List<Integer> list = arr[point]; 
 
+        // if (list.size() == 0) {
+        //     return;
+        // }
 
         for (int i = 0; i < list.size(); i++) {
             int nextPoint = list.get(i);
 
             if (!visited[nextPoint]) {
+                maxPoints++;
                 visited[nextPoint] = true;
-                dfs(nextPoint, link + 1);
+                dfs(nextPoint);
             } 
-            maxPoints = Math.max(maxPoints, link);
+            
         }
     }
 }
