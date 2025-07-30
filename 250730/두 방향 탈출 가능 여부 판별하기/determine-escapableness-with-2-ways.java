@@ -34,7 +34,7 @@ public class Main {
             int nx = x + dx[i];
             int ny = y + dy[i];
 
-            if (canGo(nx, ny))
+            if (canGo(nx, ny) && !check)
                 dfs(nx, ny);
         }
     } 
