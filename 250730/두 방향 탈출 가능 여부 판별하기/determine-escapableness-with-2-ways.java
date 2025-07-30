@@ -5,12 +5,15 @@ public class Main {
     // 동 남
     static int[] dx = {0,1};
     static int[] dy = {1,0};
-    static boolean check = false;
+    static boolean[][] visited;
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         n = sc.nextInt();
         m = sc.nextInt();
         grid = new int[n][m];
+        visited = new boolean[n][m];
+
         for (int i = 0; i < n; i++)
             for (int j = 0; j < m; j++)
                 grid[i][j] = sc.nextInt();
@@ -18,15 +21,15 @@ public class Main {
 
         dfs(0,0);
         
-        if (check) System.out.print(1);
+        if (visited[n-1][m-1]) System.out.print(1);
         else System.out.print(0);
     }
 
     public static void dfs(int x, int y) {
-        if (check) return;
+        if (visited[n-1][m-1]) return;
 
         if (x == n-1 && y == m-1) {
-            check = true;
+            visited[n-1][m-1] = true;
             return;
         }
         
@@ -34,8 +37,10 @@ public class Main {
             int nx = x + dx[i];
             int ny = y + dy[i];
 
-            if (canGo(nx, ny) && !check)
+            if (canGo(nx, ny) && !visited[nx][ny]) {
+                visited[nx][ny] = true;
                 dfs(nx, ny);
+            }
         }
     } 
 
