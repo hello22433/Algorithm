@@ -59,8 +59,8 @@ public class Main {
                 }
 
             }
+                        // System.out.println(grid[r][c] + " " + sideMaxValue);
             
-            // System.out.println(r + " " + c);
 
             if (check) {
                 int[] xy = findXYofValue(sideMaxValue);
@@ -72,10 +72,11 @@ public class Main {
         }
     }
 
+
     public static int[] findXYofValue(int val) {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                if (grid[i][j] == val) {
+                if (grid[i][j] == val && visited[i][j]) {
                     return new int[]{i,j};
                 }
             }
