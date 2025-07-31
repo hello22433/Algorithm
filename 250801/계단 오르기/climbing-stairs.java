@@ -22,8 +22,8 @@ public class Main {
             return;
         }
 
-        dp[num+2] += dp[num];
-        dp[num+3] += dp[num];
+        dp[num+2] += dp[num]%10007;
+        dp[num+3] += dp[num]%10007;
 
         memorization(num+2);
         memorization(num+3);
