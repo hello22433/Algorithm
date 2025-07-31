@@ -2,11 +2,13 @@ import java.util.*;
 public class Main {
 
     static int n;
-    static char[] operator = {'+', '-', '2', '3'};
+    static char[] operator = {'3', '2', '+', '-'};
+    static boolean[] visited;
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         n = sc.nextInt();
+        visited = new boolean[n+100];
         // Please write your code here.
         int minMoves = bfs(n);
         System.out.print(minMoves);
@@ -17,6 +19,7 @@ public class Main {
         int moves = 0;
         Queue<Integer> q = new LinkedList<>();
         q.add(n);
+        visited[n] = true;;
         if (n == 1) return 0;
 
         while (!q.isEmpty()) {
@@ -41,7 +44,10 @@ public class Main {
 
                     if (nVal == 1) return moves;
 
-                    q.add(nVal);
+                    if (!visited[nVal]) {
+                        visited[nVal] = true;
+                        q.add(nVal);
+                    }
                 }
             }
             
