@@ -8,7 +8,11 @@ public class Main {
         int n = sc.nextInt();
         fibonachi = new int[n+1];
         // Please write your code here.
-        if (n == 1 || n == 2) return 1;
+        if (n == 1 || n == 2) {
+            System.out.print(1);
+            return;
+        }
+        
         fibonachi[1] = 1;
         fibonachi[2] = 1;
 
