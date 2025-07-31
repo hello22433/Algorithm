@@ -11,8 +11,8 @@ public class Main {
         dp[0] = 1;
 
         for (int i = 0; i <=n; i++) {
-            dp[i+2] = dp[i+2] + dp[i];
-            dp[i+3] = dp[i+3] + dp[i];
+            dp[i+2] = (dp[i+2] + dp[i]) % 10007;
+            dp[i+3] = (dp[i+3] + dp[i]) % 10007;
         }
 
         System.out.print(dp[n]);
