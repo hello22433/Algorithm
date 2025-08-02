@@ -62,7 +62,7 @@ public class Main {
                 int ny = curY + dy[i];
 
                 if (canGo(nx,ny,curX,curY)) {
-                    dp[nx][ny] = dp[curX][curY]+1;
+                    dp[nx][ny] = Math.max(dp[nx][ny], dp[curX][curY]+1);
                     maxStep = Math.max(maxStep, dp[nx][ny]);
                 }
             }
