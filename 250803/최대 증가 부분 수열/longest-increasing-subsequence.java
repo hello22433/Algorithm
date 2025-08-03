@@ -20,6 +20,8 @@ public class Main {
                 if (arr[j] < arr[i]) {
                     dp[i] = Math.max(dp[i], dp[j] + 1);
                     maxVal = Math.max(maxVal, dp[i]);
+                } else {
+                    dp[i] = 1;
                 }
             }
         }
