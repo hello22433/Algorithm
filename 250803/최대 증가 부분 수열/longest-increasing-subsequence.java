@@ -21,7 +21,7 @@ public class Main {
                     dp[i] = Math.max(dp[i], dp[j] + 1);
                     maxVal = Math.max(maxVal, dp[i]);
                 } else {
-                    dp[i] = 1;
+                    dp[i] =  Math.max(dp[i], 1);
                 }
             }
         }
