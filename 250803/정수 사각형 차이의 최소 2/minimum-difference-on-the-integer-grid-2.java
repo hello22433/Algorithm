@@ -1,64 +1,86 @@
-import java.util.*;
+import java.util.Scanner;
 
 public class Main {
-    static class State implements Comparable<State> {
-        int x, y, minVal, maxVal;
+    static int n;
+    static int[][] board;
+    static final int INF = Integer.MAX_VALUE;
 
-        State(int x, int y, int minVal, int maxVal) {
-            this.x = x; this.y = y; this.minVal = minVal; this.maxVal = maxVal;
-        }
+    // low 기준으로 경로가 가능한지 체크하며 dp 배열 채우기
+    static int check(int low) {
+        int[][] dp = new int[n][n];
 
-        @Override
-        public int compareTo(State o) {
-            return (this.maxVal - this.minVal) - (o.maxVal - o.minVal);
-        }
-    }
-
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int[][] grid = new int[n][n];
-        for(int i=0; i<n; i++)
-            for(int j=0; j<n; j++)
-                grid[i][j] = sc.nextInt();
-
-        int[] dx = {0,1};
-        int[] dy = {1,0};
-
-        PriorityQueue<State> pq = new PriorityQueue<>();
-        // (x,y)에 대해 최소 max-min 차이 저장 배열 (최적화용)
-        int[][] dist = new int[n][n];
-        for(int i=0;i<n;i++)
-            Arrays.fill(dist[i], Integer.MAX_VALUE);
-
-        dist[0][0] = 0;
-        pq.offer(new State(0,0,grid[0][0],grid[0][0]));
-
-        while(!pq.isEmpty()){
-            State cur = pq.poll();
-            int diff = cur.maxVal - cur.minVal;
-
-            // 이미 더 좋은 경로 발견했으면 스킵
-            if(dist[cur.x][cur.y] < diff) continue;
-            if(cur.x == n-1 && cur.y == n-1){
-                System.out.println(diff);
-                return;
+        // 초기화: INF로 채우기
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                dp[i][j] = INF;
             }
+        }
 
-            for(int dir=0; dir<2; dir++){
-                int nx = cur.x + dx[dir];
-                int ny = cur.y + dy[dir];
-                if(nx < n && ny < n){
-                    int newMin = Math.min(cur.minVal, grid[nx][ny]);
-                    int newMax = Math.max(cur.maxVal, grid[nx][ny]);
-                    int newDiff = newMax - newMin;
+        // 시작점도 low 조건 검사
+        if (board[0][0] < low) return INF;
+        dp[0][0] = board[0][0];
 
-                    if(dist[nx][ny] > newDiff){
-                        dist[nx][ny] = newDiff;
-                        pq.offer(new State(nx, ny, newMin, newMax));
+        // 첫 행
+        for (int j = 1; j < n; j++) {
+            if (board[0][j] < low || dp[0][j - 1] == INF) {
+                dp[0][j] = INF;
+            } else {
+                dp[0][j] = Math.max(dp[0][j - 1], board[0][j]);
+            }
+        }
+
+        // 첫 열
+        for (int i = 1; i < n; i++) {
+            if (board[i][0] < low || dp[i - 1][0] == INF) {
+                dp[i][0] = INF;
+            } else {
+                dp[i][0] = Math.max(dp[i - 1][0], board[i][0]);
+            }
+        }
+
+        // 나머지 칸들
+        for (int i = 1; i < n; i++) {
+            for (int j = 1; j < n; j++) {
+                if (board[i][j] < low) {
+                    dp[i][j] = INF;
+                } else {
+                    int fromUp = dp[i - 1][j];
+                    int fromLeft = dp[i][j - 1];
+
+                    if (fromUp == INF && fromLeft == INF) {
+                        dp[i][j] = INF; // 둘 다 경로 불가
+                    } else {
+                        int minPrev = Math.min(fromUp, fromLeft);
+                        dp[i][j] = Math.max(minPrev, board[i][j]);
                     }
                 }
             }
         }
+
+        return dp[n - 1][n - 1];
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        n = sc.nextInt();
+        board = new int[n][n];
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                board[i][j] = sc.nextInt();
+            }
+        }
+
+        int res = INF;
+        // low 값을 1부터 100까지 시도
+        for (int low = 1; low <= 100; low++) {
+            int ans = check(low);
+            if (ans != INF) {
+                res = Math.min(res, Math.abs(ans - low));
+            }
+        }
+
+        System.out.println(res);
+        sc.close();
     }
 }
