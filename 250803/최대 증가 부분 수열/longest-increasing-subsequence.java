@@ -18,7 +18,7 @@ public class Main {
 
             for (int j = 0; j < i; j++) {
                 if (arr[j] < arr[i]) {
-                    dp[i] = dp[j] + 1;
+                    dp[i] = Math.max(dp[i], dp[j] + 1);
                     maxVal = Math.max(maxVal, dp[i]);
                 }
             }
@@ -33,7 +33,7 @@ public class Main {
 // 1 6 4 3 9 3
 // 
 
-// 9 1 2 3 
+// 9 1 2 3 5 1 2 4 5 7
 // dp[0] 
 // dp[4]
 // dp[i] : arr[i] 보다 작은 최소값에서 출발했을 때의 문장의 길이
