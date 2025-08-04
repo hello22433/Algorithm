@@ -26,7 +26,7 @@ public class Main {
                 for (int a = i+1; a < n; a++) {
                     for (int b = j+1; b < m; b++) {
                         if (grid[a][b] > grid[i][j]) {
-                            dp[a][b] = dp[i][j] + 1;
+                            dp[a][b] = Math.max(dp[a][b], dp[i][j] + 1);
                         }
                     }
                 }
