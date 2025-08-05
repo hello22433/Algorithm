@@ -31,7 +31,7 @@ public class Main {
             for (int j = 0; j < i; j++) {
                 
                 if (arr[j].e < arr[i].s)
-                    dp[i] = Math.max(dp[i], dp[j] + 1);
+                    dp[i] = Math.max(dp[i], arr[i].p + dp[j]);
             }
             maxVal = Math.max(maxVal, dp[i]);
         }
