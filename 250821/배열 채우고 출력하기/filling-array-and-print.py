@@ -7,4 +7,4 @@ for i in range(10):
 nums.reverse()
 
 for i in range(10):
-    print(nums[i])
+    print(nums[i], end="")
