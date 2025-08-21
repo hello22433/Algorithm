@@ -1,10 +1,10 @@
-list = []
+nums = []
 inputs = input().split()
 
-for _ in range(10):
-    list.append(inputs[i])
+for i in range(10):
+    nums.append(inputs[i])
 
-list.reverse()
+nums.reverse()
 
-for _ in range(10):
-    print(list[i])
+for i in range(10):
+    print(nums[i])
