@@ -1,5 +1,5 @@
 N = int(input())
-inputs = input().split()
+inputs = list(map(int,input().split()))
 
 for i in range(N) :
     inputs[i] = inputs[i] ** 2
