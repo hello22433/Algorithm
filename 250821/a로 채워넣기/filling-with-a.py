@@ -1,5 +1,3 @@
 a = input()
 
-a[1] = 'a'
-a[-2] = 'a'
-print(a)
+print(a[0],'a',a[2:-2],'a',a[-1:],sep="")
