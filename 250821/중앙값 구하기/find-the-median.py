@@ -4,9 +4,15 @@ if (A > B) :
     if (B > C) :
         print(B)
     else : 
-        print(C)
+        if (A > C) :
+            print(C)
+        else :
+            print(A)
 else :
     if (A > C) :
         print(A)
     else :
-        print(C)
+        if (B > C) :
+            print(C)
+        else :
+            print(B)
