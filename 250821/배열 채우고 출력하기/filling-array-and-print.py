@@ -1,7 +1,8 @@
 list = []
+inputs = input().split()
 
 for _ in range(10):
-    list.append(input())
+    list.append(inputs[i])
 
 list.reverse()
 
