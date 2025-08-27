@@ -1,3 +1,3 @@
-n=float(int())*30.48
+n=float(input())*30.48
 
 print("%.1f" % n)
