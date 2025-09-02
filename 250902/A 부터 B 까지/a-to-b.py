@@ -1,0 +1,7 @@
+a,b=map(int,input().split())
+
+for i in range(a,b+1,0) :
+    if i%2==1:
+        i*=2
+    else:
+        i+=3
