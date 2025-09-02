@@ -1,7 +1,7 @@
 a,b=map(int,input().split())
 
 for i in range(a,b+1,1) :
-    print(a, end=" ")
+    print(i, end=" ")
     if i%2==1:
         i*=2
     else:
