@@ -8,4 +8,4 @@ for i in range(10) :
         sum_val += num
         cnt += 1
 
-print(f"{sum_val} {sum_val/cnt:.1f})
+print(f"{sum_val} {sum_val/cnt:.1f}")
