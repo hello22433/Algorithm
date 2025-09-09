@@ -8,10 +8,18 @@ a = list(map(int, input().split()))
 min_val = -sys.maxsize
 sec_min_val = -sys.maxsize
 
-for num in a :
+idx = -1
+
+for i in range(len(a)) :
+    num = a[i]
     if min_val < num :
+        idx = i
         min_val = num
-    elif min_val >= num and sec_min_val < num:
+
+for i in range(len(a)) :
+    num = a[i]
+    if min_val >= num and sec_min_val < num and i != idx :
         sec_min_val = num
+
 
 print(min_val,sec_min_val)
