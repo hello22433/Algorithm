@@ -1,10 +1,12 @@
+import sys
+
 n = int(input())
 a = list(map(int, input().split()))
 
 # Please write your code here.
 
-min_val = a[0]
-sec_min_val = a[0]
+min_val = -sys.maxsize
+sec_min_val = -sys.maxsize
 
 for num in a :
     if min_val < num :
