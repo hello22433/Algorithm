@@ -7,7 +7,7 @@ new_arr = [[0 for _ in range(m)] for _ in range(n)]
 
 for i in range(n) :
     for j in range(m) :
-        if arr[i] == arr[j] :
+        if arr1[i] == arr2[j] :
             new_arr[i][j] = 1
         else :
             new_arr[i][j] = 0
