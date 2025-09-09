@@ -1,7 +1,8 @@
 sum_val = 0
-for i in range(10) :
-    n = int(input())
+arr = list(map(int,input().split()))
 
-    sum_val += n
+for num in arr :
+
+    sum_val += num
 
 print(sum_val)
