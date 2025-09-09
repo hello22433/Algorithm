@@ -2,8 +2,8 @@ arr = list(map(int,input().split()))
 
 import sys
 
-max_val = sys.maxsize
-min_val = -sys.maxsize
+max_val = -sys.maxsize
+min_val = sys.maxsize
 for num in arr :
     if num < 500 :
         if max_val < num :
