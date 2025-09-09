@@ -13,4 +13,4 @@ for num in arr :
         if min_val > num :
             min_val = num
         
-print(min_val, max_val)
+print(max_val, min_val)
