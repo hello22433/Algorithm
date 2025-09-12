@@ -11,4 +11,4 @@ while True :
 
 print(cnt)
 for s in arr :
-    print(sd)
+    print(s)
