@@ -6,4 +6,10 @@ while a != b :
     a = a[-1] + a[:-1]
     cnt += 1
 
-print(cnt)
+    if cnt == len(a) :
+        break
+
+if a==b:
+    print(cnt)
+else :
+    print(-1)
