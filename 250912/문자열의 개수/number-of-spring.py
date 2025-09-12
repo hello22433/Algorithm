@@ -6,8 +6,11 @@ while True :
     if s=='0' :
         break
 
-    arr.append(s)
+    
     cnt+=1
+
+    if cnt % 2 == 1 :
+        arr.append(s)
 
 print(cnt)
 for s in arr :
