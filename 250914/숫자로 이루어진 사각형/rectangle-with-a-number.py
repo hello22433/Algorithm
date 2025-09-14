@@ -2,7 +2,6 @@ n = int(input())
 
 # Please write your code here.
 
-print_nums(n)
 
 
 def print_nums(n) :
@@ -14,3 +13,6 @@ def print_nums(n) :
             num += 1
             num = num % 10
         print()
+
+
+print_nums(n)
