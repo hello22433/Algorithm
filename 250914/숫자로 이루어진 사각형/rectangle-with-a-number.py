@@ -11,7 +11,8 @@ def print_nums(n) :
         for _ in range(n) :
             print(num,end=" ")
             num += 1
-            num = num % 10
+            if num == 10 :
+                num = 1
         print()
 
 
