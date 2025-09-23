@@ -6,6 +6,6 @@ def pro(n) :
     if n == 1 :
         return 1
 
-    return pro(n-1) * n
+    return pro(n-1) + n
 
 print(pro(N))
