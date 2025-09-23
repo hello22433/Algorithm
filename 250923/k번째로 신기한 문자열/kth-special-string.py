@@ -5,7 +5,7 @@ str1 = [input() for _ in range(n)]
 # Please write your code here.
 
 def isFirstT(l) :
-    return l[0] == T 
+    return l[:len(t)] == t
 
 str1 = list(filter(isFirstT,str1))
 
