@@ -11,5 +11,5 @@ class S:
 s1 = S("codetree",50)
 s2=S(product_name,product_code)
 
-print(f"product {s1.product_name} is {s1.product_code}")
-print(f"product {s2.product_name} is {s2.product_code}")
+print(f"product {s1.product_code} is {s1.product_name}")
+print(f"product {s2.product_code} is {s2.product_name}")
