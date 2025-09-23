@@ -4,8 +4,8 @@ N = int(input())
 
 def pro(n) :
     if n<10 :
-        return n
+        return n**2
 
-    return pro(n//10) + n%10
+    return pro(n//10) + (n%10)**2
 
 print(pro(N))
