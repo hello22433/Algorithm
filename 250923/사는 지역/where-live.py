@@ -20,12 +20,12 @@ for i in range(n):
 
 idx = 0
 for i,person in enumerate(mans) :
-    if person.anme > mans[idx].name :
+    if person.name > mans[idx].name :
         idx = i
 
-print(f"name {people[idx].name}")
-print(f"name {people[idx].address}")
-print(f"name {people[idx].region}")
+print(f"name {mans[idx].name}")
+print(f"addr {mans[idx].address}")
+print(f"city {mans[idx].region}")
 
 # Please write your code here.
 
