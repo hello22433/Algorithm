@@ -6,4 +6,4 @@ word = [input() for _ in range(n)]
 word.sort()
 
 for e in word :
-    print(e,end=" ")
+    print(e)
