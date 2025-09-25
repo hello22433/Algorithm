@@ -4,7 +4,7 @@ m1, d1, m2, d2 = map(int, input().split())
 
 daysOfMonth = [0,31,28,31,30,31,30,31,31,30,31,30,31]
 
-times = 0
+times = 1
 
 while True :
     if m1 == m2 and d1 == d2 :
