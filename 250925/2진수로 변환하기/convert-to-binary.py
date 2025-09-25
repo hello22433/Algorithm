@@ -4,7 +4,7 @@ n = int(input())
 
 digits = []
 
-for i in range(n) :
+while True :
     if n < 2 :
         digits.append(n)
         break
