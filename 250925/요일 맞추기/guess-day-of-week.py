@@ -18,7 +18,7 @@ def pro(m1,d1,m2,d2) :
         # 만약 m1,d1이 더 나중 날짜라면 거꾸로 가야 할 것이다
         # 
 
-        if m1 >= m2 and d1 > d2 :
+        if m1>m2 or (m1 == m2 and d1 > d2) :
             weeksIdx -= 1
             d1 -= 1
         else :
