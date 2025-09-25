@@ -3,15 +3,17 @@ a, b, c, d = map(int, input().split())
 # Please write your code here.
 times = 0
 
-while True :
-    if a == c and b == d :
-        break
+print((c * 60 + d) - (a * 60 + b))
 
-    b += 1
-    times += 1
+# while True :
+#     if a == c and b == d :
+#         break
 
-    if b == 60 :
-        b=0
-        a+=1
+#     b += 1
+#     times += 1
+
+#     if b == 60 :
+#         b=0
+#         a+=1
         
-print(times)
+# print(times)
