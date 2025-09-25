@@ -29,7 +29,7 @@ def pro(m1,d1,m2,d2) :
         if d1 > daysOfMonths[m1] :
             m1 += 1
             d1 = 1
-        elif d1 == 1 :
+        elif d1 == 0 :
             m1 -= 1
             d1 = daysOfMonths[m1]
 
