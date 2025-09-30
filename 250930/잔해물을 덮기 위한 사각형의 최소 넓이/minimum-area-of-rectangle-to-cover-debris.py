@@ -1,8 +1,11 @@
 import sys
 
+def inpp(n) :
+    return int(n) + 1000
+
 x1, y1, x2, y2 = [0] * 2, [0] * 2, [0] * 2, [0] * 2
-x1[0], y1[0], x2[0], y2[0] = map(int, input().split())
-x1[1], y1[1], x2[1], y2[1] = map(int, input().split())
+x1[0], y1[0], x2[0], y2[0] = map(inpp, input().split())
+x1[1], y1[1], x2[1], y2[1] = map(inpp, input().split())
 arr = [[0 for _ in range(2001)] for _ in range(2001)]
 # Please write your code here.
 
