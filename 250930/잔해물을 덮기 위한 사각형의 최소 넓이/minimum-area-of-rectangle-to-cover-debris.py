@@ -9,14 +9,12 @@ x1[1], y1[1], x2[1], y2[1] = map(inpp, input().split())
 arr = [[0 for _ in range(2001)] for _ in range(2001)]
 # Please write your code here.
 
-check = False
 
 for i in range(2) :
     for j in range(x1[i], x2[i]):
         for k in range(y1[i], y2[i]) :
             if i == 0 :
                 arr[j][k] = 1
-                check = True
             else :
                 arr[j][k] = 0
 
@@ -25,9 +23,11 @@ maxRow = -sys.maxsize
 minCol = sys.maxsize
 maxCol = -sys.maxsize
 
+check = False
 for i in range(len(arr)) :
     for j in range(len(arr[i])) :
         if arr[i][j] == 1 :
+            check = True
             minRow = min(minRow, i)
             maxRow = max(maxRow, i)
             minCol = min(minCol, j)
