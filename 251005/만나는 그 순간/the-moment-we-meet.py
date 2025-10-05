@@ -8,7 +8,7 @@ t = []
 aLoc = 0
 bLoc = 0
 aArr.append(aLoc)
-aArr.append(bLoc)
+bArr.append(bLoc)
 
 for _ in range(n):
     direction, time = input().split()
