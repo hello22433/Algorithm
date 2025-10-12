@@ -38,8 +38,8 @@ for t in tArr :
 
         if not eeNew and developers[ee][0] == 1 and developers[ee][1] >= 1 :
             developers[ee][1] -= 1
-            if developers[ee][0] == 0 :
-                developers[ee][0] = 1
+            if developers[er][0] == 0 :
+                developers[er][0] = 1
 
 for i in range(1, len(developers)) :
     if developers[i][0] == 1 :
