@@ -16,20 +16,20 @@ def inRange(x,y) :
         return True
     return False
 
-for i in range(2, n*n+1) :
+for i in range(2, n*m+1) :
     
     nx = x + dx[dirnum]
     ny = y + dy[dirnum]
 
     if inRange(nx,ny) and arr[nx][ny] == 0 :
         arr[nx][ny] = i
-        x,y =nx,ny
     else :
         dirnum = (dirnum+1)%4
         nx = x + dx[dirnum]
         ny = y + dy[dirnum]
         arr[nx][ny] = i
-        x,y =nx,ny
+
+    x,y =nx,ny
 
 
 for i in range(n) :
