@@ -29,9 +29,9 @@ curY = 0
 if quot==0 :
     curX, curY = -1, remain
 elif quot== 2:
-    curX, curY = remain, n
-elif quot== 1: 
     curX, curY = n, n-1 - remain
+elif quot== 1: 
+    curX, curY = remain, n
 else :
     curX, curY = n-1 - remain, -1
 
@@ -78,6 +78,5 @@ while True :
         break
 
     pingPong(curX,curY)
-    cnt += 1
 
 print(cnt)
