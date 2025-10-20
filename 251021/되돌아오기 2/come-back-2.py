@@ -10,6 +10,7 @@ dy = [1,0,-1,0]
 
 curX = 0
 curY = 0 
+check = False
 
 cnt = 0
 
