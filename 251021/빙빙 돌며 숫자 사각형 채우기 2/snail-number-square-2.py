@@ -21,7 +21,7 @@ for i in range(2,n*m+1) :
     nx = curX + dx[dir]
     ny = curY + dy[dir]
 
-    if not inRange(nx, ny) or board[nx][ny] != 0 :
+    while (not inRange(nx, ny) or board[nx][ny] != 0) :
         dir = (dir - 1 + 4) % 4
 
         nx = curX + dx[dir]
