@@ -22,14 +22,14 @@ def isPeonAn(x,y) :
         if inRange(nx, ny) and board[nx][ny] == 1 :
             cnt += 1
 
-    if cnt >= 3 :
+    if cnt == 3 :
         return True
     return False
 
 for point in points :
     pointX = point[0]-1
     pointY = point[1]-1
-    
+
     board[pointX][pointY] = 1
 
     if isPeonAn(pointX, pointY) :
