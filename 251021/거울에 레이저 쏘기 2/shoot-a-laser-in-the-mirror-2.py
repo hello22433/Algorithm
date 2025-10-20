@@ -74,9 +74,11 @@ while True :
     
     move(curX, curY)
 
+
     if not inRange(curX, curY) :
         break
 
     pingPong(curX,curY)
+    cnt += 1
 
 print(cnt)
