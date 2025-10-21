@@ -7,19 +7,19 @@ y = [p[1] for p in points]
 import sys
 minDistance = sys.maxsize
 for i in range(1,n-1) :
-    curX = 0
-    curY = 0
+    curX = x[0]
+    curY = y[0]
 
     distance = 0
 
-    for j in range(n) :
+    for j in range(1,n) :
         if i == j :
             continue
 
         nx = x[j]
         ny = y[j]
 
-        distance += abs(nx-curX) + abs(ny-curY)
+        distance += abs(curX-nx) + abs(curY-ny)
 
         curX = nx
         curY = ny
