@@ -6,7 +6,7 @@ result = 0
 x = 0
 y = 0
 
-for i in range(19-5) :
+for i in range(19-4) :
     for j in range(19) :
         if (board[i][j]==1 and board[i+1][j]==1 and board[i+2][j]==1 and board[i+3][j]==1 and board[i+4][j]==1) :
             result=1
@@ -18,7 +18,7 @@ for i in range(19-5) :
             y = j+1
 
 for i in range(19) :
-    for j in range(19-5) :
+    for j in range(19-4) :
         if (board[i][j]==1 and board[i][j+1]==1 and board[i][j+2]==1 and board[i][j+3]==1 and board[i][j+4]==1) :
             result=1
             x = i+1
@@ -28,8 +28,8 @@ for i in range(19) :
             x = i+1
             y = j+2+1
 
-for i in range(19-5) :
-    for j in range(19-5) :
+for i in range(19-4) :
+    for j in range(19-4) :
         if (board[i][j]==1 and board[i+1][j]==1 and board[i+2][j]==1 and board[i+3][j]==1 and board[i+4][j]==1) :
             result=1
             x = i+2+1
@@ -56,7 +56,7 @@ for i in range(19-5) :
             y = j+2+1
 
 for i in range(4,19) :
-    for j in range(19-5) :
+    for j in range(19-4) :
         if (board[i][j]==1 and board[i-1][j+1]==1 and board[i-2][j+2]==1 and board[i-3][j+3]==1 and board[i-4][j+4]==1) :
             result=1
             x = i-2+1
