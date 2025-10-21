@@ -39,7 +39,7 @@ for i in range(4,19) :
             result=1
             x = i+2+1
             y = j+2+1
-        elif (board[i][j]==1 and board[i-1][j+1]==2 and board[i-2][j+2]==2 and board[i-3][j+3]==2 and board[i-4][j+4]==2) :
+        elif (board[i][j]==2 and board[i-1][j+1]==2 and board[i-2][j+2]==2 and board[i-3][j+3]==2 and board[i-4][j+4]==2) :
             result=2
             x = i+2+1
             y = j+2+1
