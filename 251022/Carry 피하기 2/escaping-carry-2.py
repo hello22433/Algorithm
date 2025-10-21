@@ -14,8 +14,8 @@ def occur_sum_carry(num1,num2) :
     return False
 
 for i in range(n) :
-    for j in range(n) :
-        for k in range(n) :
+    for j in range(i+1,n) :
+        for k in range(j+1,n) :
             if not occur_sum_carry(arr[i],arr[j]) and not occur_sum_carry((arr[i]+arr[j]),arr[k]) :
                 max_sum = max(max_sum,arr[i]+arr[j]+arr[k])
 
