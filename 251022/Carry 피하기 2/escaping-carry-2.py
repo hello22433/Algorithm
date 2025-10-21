@@ -3,7 +3,7 @@ arr = [int(input()) for _ in range(n)]
 
 # Please write your code here.
 
-max_sum =0
+max_sum =-1
 
 def occur_sum_carry(num1,num2) :
     while num1 != 0 and num2 != 0 :
