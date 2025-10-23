@@ -1,7 +1,7 @@
 N, K = map(int, input().split())
 candy = []
 pos = []
-arr = [0] * 101
+arr = [0] * 401
 for i in range(N):
     c, p = map(int, input().split())
     candy.append(c)
@@ -12,6 +12,6 @@ for i in range(N):
 # Please write your code here.
 
 max_sum = 0
-for i in range(K,101-K):
+for i in range(K,len(arr)-K):
     max_sum = max(max_sum, sum(arr[i-K:i+K+1]))
 print(max_sum)
