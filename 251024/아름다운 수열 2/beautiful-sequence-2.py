@@ -17,4 +17,5 @@ else :
         s.sort()
         if s == B :
             cnt += 1
-print(cnt)
+    print(cnt)
+    
