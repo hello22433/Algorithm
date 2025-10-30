@@ -28,6 +28,7 @@ public class Main {
 
             result = Math.max(result,dp[i]);
         }
+        result = Math.max(result,dp[0]);
 
         System.out.println(result);
         
