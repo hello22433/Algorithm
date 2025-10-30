@@ -3,8 +3,8 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        int[] nums = new int[n];
-        for (int i = 0; i < n; i++) {
+        int[] nums = new int[n+1];
+        for (int i = 1; i <= n; i++) {
             nums[i] = sc.nextInt();
         }
         // Please write your code here.
@@ -16,19 +16,12 @@ public class Main {
         int result = Integer.MIN_VALUE;
         int[] dp = new int[n+1];
 
-        for (int i = 1; i < n; i++) {
+        for (int i = 1; i <= n; i++) {
             dp[i] = Math.max(dp[i-1] + nums[i], nums[i]);
 
             result = Math.max(result,dp[i]);
         }
 
-        dp[0] = nums[0];
-        for (int i = 1; i < n; i++) {
-            dp[i] = Math.max(dp[i-1] + nums[i], nums[i]);
-
-            result = Math.max(result,dp[i]);
-        }
-        result = Math.max(result,dp[0]);
 
         System.out.println(result);
         
