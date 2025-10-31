@@ -12,6 +12,9 @@ public class Main {
         int[][] dp = new int[n+1][4];
 
         dp[0][0] = 0;
+        dp[1][1] = coins[1];
+        dp[2][0] = coins[2];
+        dp[2][2] = dp[1][1] + coins[2];
 
         for (int i = 0; i <= n; i++) {
             for (int j = 0; j <= 3; j++) {
