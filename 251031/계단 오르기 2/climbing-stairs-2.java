@@ -1,4 +1,5 @@
-import java.util.Scanner;
+import java.util.*;
+
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -10,11 +11,14 @@ public class Main {
         // Please write your code here.
 
         int[][] dp = new int[n+1][4];
+        for (int[] row : dp) Arrays.fill(row, -1);
 
-        dp[0][0] = 0;
+        dp[1][1] = coins[1]; // 1칸으로 첫 계단
+        dp[2][0] = coins[2]; // 2칸으로 첫 계단
 
-        for (int i = 0; i <= n; i++) {
+        for (int i = 1; i <= n; i++) {
             for (int j = 0; j <= 3; j++) {
+                if (dp[i][j] == -1) continue;
 
                 if (i+2 <= n) {
                     dp[i+2][j] = Math.max(dp[i][j] + coins[i+2], dp[i+2][j]);
@@ -27,7 +31,7 @@ public class Main {
             }
         } 
         int result = 0;
-        for (int i = 0; i <= 2; i++) {
+        for (int i = 0; i <= 3; i++) {
             // System.out.println(result);
             result = Math.max(result, dp[n][i]);
         }
