@@ -18,11 +18,11 @@ public class Main {
             arr[i] = Integer.parseInt(st.nextToken());
         }
 
-        long globalMaxScore = 0;
 
         long[] dp = new long[K + 1];
         long INF = -100000000L;
         Arrays.fill(dp, INF);
+        long globalMaxScore = INF;
 
         for (int i = 0; i < N; i++) {
 
