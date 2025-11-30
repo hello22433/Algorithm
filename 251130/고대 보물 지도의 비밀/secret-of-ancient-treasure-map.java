@@ -33,13 +33,15 @@ public class Main {
 
             if (curNum >= 0) {
 
-                if (dp[0] != INF) dp[0] = curNum;
+                if (dp[0] == INF) dp[0] = curNum;
                 else dp[0] = Math.max(dp[0] + curNum, curNum);
 
                 for (int k = 1; k <= K; k++) {
-                    dp[k] = dp[k] + curNum;
+                    if (dp[k] != INF) {
+                        dp[k] = dp[k] + curNum;
 
-                    globalMaxScore = Math.max(dp[k], globalMaxScore);
+                    }
+
                 }
             } else {
 
