@@ -31,7 +31,7 @@ public class Main {
             // 만약 양수라면 그냥 더하면 된다.
             // 음수의 개수가 0인 경우는 이 수부터 다시 시작할지 선택 가능하다.
 
-            if (curNum > 0) {
+            if (curNum >= 0) {
 
                 if (dp[0] != INF) dp[0] = curNum;
                 else dp[0] = Math.max(dp[0] + curNum, curNum);
