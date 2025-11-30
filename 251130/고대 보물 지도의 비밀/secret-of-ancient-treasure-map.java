@@ -33,12 +33,11 @@ public class Main {
 
             if (curNum > 0) {
 
-                for (int k = 0; k <= K; k++) {
-                    if (dp[k] == INF) {
-                        dp[k] = curNum;
-                    } else {
-                        dp[k] = dp[k] + curNum;
-                    }
+                if (dp[0] != INF) dp[0] = curNum;
+                else dp[0] = Math.max(dp[0] + curNum, curNum);
+
+                for (int k = 1; k <= K; k++) {
+                    dp[k] = dp[k] + curNum;
 
                     globalMaxScore = Math.max(dp[k], globalMaxScore);
                 }
@@ -53,18 +52,26 @@ public class Main {
                     
                     
                     if (dp[k-1] != INF) {
-                        dp[k] = Math.max(dp[k-1] + curNum, curNum);
+
+                        if (k==1) {
+                            dp[k] = Math.max(dp[k-1] + curNum, curNum);
+                        } else {
+                            dp[k] = dp[k-1] + curNum;
+                        }
+                    } else if (k==1) {
+                        dp[k] = curNum;
                     } else {
-
+                        dp[k] = INF;
                     }
-
-                    
-                    globalMaxScore = Math.max(dp[k], globalMaxScore);
 
                     
                 }
                 dp[0] = INF;
                 
+            }
+
+            for (int k = 0; k < K+1; k++) {
+                globalMaxScore = Math.max(globalMaxScore, dp[k]);
             }
 
             
