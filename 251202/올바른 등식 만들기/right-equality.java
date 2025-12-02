@@ -13,11 +13,11 @@ public class Main {
         int[][] dp = new int[N][41];
 
         if (numbers[0] >= -20 && numbers[0] <= 20) {
-            dp[0][numbers[0] + 20] = 1;
+            dp[0][numbers[0] + 20] += 1;
         }
 
         if (numbers[0] >= -20 && numbers[0] <= 20) {
-            dp[0][20 - numbers[0]] = 1;
+            dp[0][20 - numbers[0]] += 1;
         }
 
         for (int i = 1; i < N; i++) {
