@@ -10,7 +10,7 @@ public class Main {
         }
         // Please write your code here.
 
-        int[][] dp = new int[N][41];
+        long[][] dp = new long[N][41];
 
         if (numbers[0] >= -20 && numbers[0] <= 20) {
             dp[0][numbers[0] + 20] += 1;
