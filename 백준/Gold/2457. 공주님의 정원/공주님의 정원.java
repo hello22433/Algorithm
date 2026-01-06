@@ -32,7 +32,7 @@ class Main {
         }
         
         Arrays.sort(flowers, (a,b) -> {
-           if (a.start == b.start) return b.end - a.end;
+           // if (a.start == b.start) return b.end - a.end;
            return a.start - b.start;
         });
         
