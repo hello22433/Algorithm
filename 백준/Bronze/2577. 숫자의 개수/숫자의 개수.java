@@ -13,14 +13,16 @@ class Main {
 
         int m = a*b*c;
 
-        String sm = String.valueOf(m);
         int[] arr = new int[10];
-        for (int i = 0; i < sm.length(); i++) {
-            int num = sm.charAt(i) - '0';
-            arr[num]++;
+        
+        
+        while (m > 0) {
+            int digit = m % 10;
+            arr[digit]++;
+            m /= 10;
         }
-        
-        
+
+
         for (int i = 0; i < arr.length; i++) {
             System.out.println(arr[i]);
         }
