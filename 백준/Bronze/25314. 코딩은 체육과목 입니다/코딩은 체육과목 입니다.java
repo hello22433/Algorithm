@@ -10,11 +10,8 @@ class Main {
 //        int b = sc.nextInt();
 //        int sum = 0;
 
-        for (int i = 0; i < a/4; i++) {
-            System.out.print("long ");
-        }
 
-        System.out.print("int");
+        System.out.print("long ".repeat(a/4) + "int");
 
     }
 
