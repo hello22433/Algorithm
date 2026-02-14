@@ -9,12 +9,23 @@ class Main {
         int b = sc.nextInt();
 //        int c = sc.nextInt();
 
-        StringBuilder sa = new StringBuilder(String.valueOf(a));
-        StringBuilder sb = new StringBuilder(String.valueOf(b));
+        int ra = reverse(a);
+        int rb = reverse(b);
 
-        System.out.println(Math.max(Integer.parseInt(sa.reverse().toString()), Integer.parseInt(sb.reverse().toString())));
+        System.out.println(Math.max(ra,rb));
+
+
+
+    }
+    
+    private static int reverse(int num) {
+        int result = 0;
         
-
-
+        while (num > 0) {
+            result = result * 10 + num % 10;
+            num /= 10;
+        }
+        
+        return result;
     }
 }
