@@ -13,7 +13,7 @@ class Main {
 
         do {
             int sum = a / 10 + a % 10;
-            a = Integer.parseInt(String.valueOf(a % 10) + String.valueOf(sum % 10));
+            a = (a % 10)*10 + (sum % 10);
             cnt++;
         } while (first != a);
 
