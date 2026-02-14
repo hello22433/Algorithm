@@ -11,19 +11,21 @@ class Main {
 
         String s = sc.nextLine().toUpperCase();
 
-        HashMap<Character, Integer> map = new HashMap<>();
+        int[] arr = new int[26];
 
-        for (char c  : s.toCharArray()) {
-            map.put(c, map.getOrDefault(c, 0) + 1) ;
+        for (int i = 0; i < s.length(); i++) {
+            int idx = s.charAt(i) - 'A';
+
+            arr[idx]++;
         }
 
-        int max = 0;
-        Character result = '?';
-        for (Map.Entry<Character, Integer> entry : map.entrySet()) {
-            if (entry.getValue() > max) {
-                max = entry.getValue() ;
-                result = entry.getKey();
-            } else if (entry.getValue() == max) {
+        int maxCnt = 0;
+        char result = '?';
+        for (int i = 0; i < 26; i++) {
+            if (arr[i] > maxCnt) {
+                result = (char) (i + 'A');
+                maxCnt = arr[i];
+            } else if (arr[i] == maxCnt) {
                 result = '?';
             }
         }
