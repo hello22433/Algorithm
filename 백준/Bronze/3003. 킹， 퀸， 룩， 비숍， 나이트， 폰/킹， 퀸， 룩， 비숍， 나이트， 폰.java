@@ -10,11 +10,16 @@ class Main {
 //        int b = sc.nextInt();
 //        int sum = 0;
 
+        int[] input = new int[6];
         int[] arr = {1,1,2,2,2,8};
 
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < input.length; i++) {
             int a = sc.nextInt();
-            System.out.print(arr[i] - a + " ");
+            input[i] = a;
+        }
+        
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] - input[i] + " ");
         }
 
     }
