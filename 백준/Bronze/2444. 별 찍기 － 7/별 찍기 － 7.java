@@ -7,22 +7,20 @@ class Main {
 
         int n = sc.nextInt();
 
-        for (int i = 1; i <= 2*n-1; i++) {
+        int center = n-1;
 
-            int distance = Math.abs(n-i);
-            int star = 2*(n-distance) -1;
-            int space = distance;
-
-            for (int j = 0; j < distance; j++) {
-                System.out.print(" ");
+        for (int col = 0; col < 2*n-1; col++) {
+            boolean check = false;
+            for (int row = 0; row < 2*n-1; row++) {
+                if (Math.abs(row - center) + Math.abs(col - center) <= n-1) {
+                    System.out.print("*");
+                    check = true;
+                } else {
+                    if (check) break;
+                    System.out.print(" ");
+                }
             }
-
-            for (int j = 0; j < star; j++) {
-                System.out.print("*");
-            }
-
             System.out.println();
-
         }
 
     }
