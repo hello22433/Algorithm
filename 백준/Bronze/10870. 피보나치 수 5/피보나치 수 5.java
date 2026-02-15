@@ -7,19 +7,21 @@ class Main {
 
         int n = sc.nextInt();
 
-        int[] fibonacci = new int[n+1];
-        fibonacci[0] = 0;
+        long a = 0;
+        long b = 1;
+
         if (n == 0) {
-            System.out.println(0);
+            System.out.println("0");
             return;
         }
-        fibonacci[1] = 1;
 
         for (int i = 2; i <= n; i++) {
-            fibonacci[i] = fibonacci[i-1] + fibonacci[i-2];
+            long temp = a+b;
+            a = b;
+            b = temp;
         }
-        System.out.println(fibonacci[n]);
 
+        System.out.println(b);
     }
 
 }
