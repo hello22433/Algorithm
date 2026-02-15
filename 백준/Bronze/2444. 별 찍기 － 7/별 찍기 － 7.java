@@ -7,29 +7,24 @@ class Main {
 
         int n = sc.nextInt();
 
-        for (int i = 1; i <= n; i++) {
-            // 공백
-            for (int j = 1; j <= n-i; j++) {
+        for (int i = 1; i <= 2*n-1; i++) {
+
+            int distance = Math.abs(n-i);
+            int star = 2*(n-distance) -1;
+            int space = distance;
+
+            for (int j = 0; j < distance; j++) {
                 System.out.print(" ");
             }
-            // *
-            for (int j = 1; j <= 2*i-1; j++) {
+
+            for (int j = 0; j < star; j++) {
                 System.out.print("*");
             }
+
             System.out.println();
+
         }
 
-        for (int i = n-1; i >= 1; i--) {
-            // 공백
-            for (int j = n-i; j >= 1; j--) {
-                System.out.print(" ");
-            }
-            // *
-            for (int j = 2*i-1; j >= 1; j--) {
-                System.out.print("*");
-            }
-            System.out.println();
-        }
     }
 
 }
