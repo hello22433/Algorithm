@@ -20,12 +20,7 @@ class Main {
             int floor = n%h == 0 ? h : n%h;
             int room = (n-1) / h + 1;
 
-            if (room < 10) {
-                System.out.println(floor + "0" + room);
-            } else {
-                System.out.println(floor + "" + room);
-
-            }
+            System.out.printf("%d%02d\n", floor, room);
         }
 
         // floor
