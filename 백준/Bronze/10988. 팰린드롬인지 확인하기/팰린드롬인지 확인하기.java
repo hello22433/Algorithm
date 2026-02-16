@@ -9,13 +9,16 @@ class Main {
         st = new StringTokenizer(br.readLine());
 
         String s = st.nextToken();
+        
+        String reversed = new StringBuilder(s).reverse().toString();
+        
+        System.out.print(s.equals(reversed) ? 1 : 0);
 
-        if (isPalindrom(s)) {
-            System.out.println(1);
-        } else {
-            System.out.println(0);
-        }
-
+//        if (isPalindrom(s)) {
+//            System.out.println(1);
+//        } else {
+//            System.out.println(0);
+//        }
 
 
     }
