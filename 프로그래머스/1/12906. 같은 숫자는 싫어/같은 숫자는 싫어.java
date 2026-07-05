@@ -2,13 +2,11 @@ import java.util.*;
 
 public class Solution {
     public int[] solution(int []arr) {
-        List<Integer> result = new ArrayList<>();
+        Deque<Integer> result = new ArrayDeque<>();
         
-        result.add(arr[0]);
-        
-        for (int i = 1; i < arr.length; i++) {
-            if (result.get(result.size() - 1) != arr[i]) {
-                result.add(arr[i]);
+        for (int a : arr) {
+            if (result.isEmpty() || result.peekLast() != a) {
+                result.addLast(a);
             }
         }
         
