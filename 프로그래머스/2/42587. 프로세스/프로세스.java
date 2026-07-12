@@ -2,38 +2,37 @@ import java.util.*;
 
 class Solution {
     public int solution(int[] priorities, int location) {
-        int count = 1;
-                
-        PriorityQueue<Integer> pq = new PriorityQueue<>((a,b) -> {
-            return b-a;
-        });
+        int count = 0;
         
-        Queue<Integer> q = new ArrayDeque<>();
-        
-        for (int p : priorities) {
-            pq.offer(p);
-            q.offer(p);
+        Queue<int[]> q = new ArrayDeque<>();
+        for (int i = 0; i < priorities.length; i++) {
+            q.offer(new int[]{i, priorities[i]});
         }
+        
+        Arrays.sort(priorities);
+        int maxIdx = priorities.length - 1;
         
         
         while (!q.isEmpty()) {
-            int evaluatedNum = q.poll();
-            if (pq.peek() == evaluatedNum) {
-                if (location == 0) return count;
-                else {
-                    pq.poll();
-                    count++;
-                    location -= 1;
+            int[] cur = q.poll();
+            int curIdx = cur[0];
+            int curPrior = cur[1];
+            int maxPriority = priorities[maxIdx];
+            
+            if (curPrior == maxPriority) {
+                count++;
+                
+                if (curIdx == location) {
+                    return count;
                 }
+                maxIdx--;
             } else {
-                q.offer(evaluatedNum);
-                if (location == 0) {
-                    location = q.size() - 1;
-                } else {
-                    location -= 1;
-                }
+                q.offer(cur);
             }
         }
+        
+        
+        
         
         return count;
     }
