@@ -1,40 +1,31 @@
 class Solution {
-    static int cnt = 0;
-    static int tarNum;
-    static int[] numArr;
+    static int answerCnt = 0;
+    static int targetNum = 0;
+    static int[] arr;
     
     public int solution(int[] numbers, int target) {
-        // n개의 음이 아닌 정수들 -> 순서 안 바꾸기 -> 적절히 더하거나 빼기 -> 타겟 넘버 만들기
-        // 순서에 상관있게, 더하기/빼기를 모두 탐색
+        targetNum = target;
+        arr = numbers;
         
-        numArr = numbers;
-        tarNum = target;
         dfs(0, 0);
-        return cnt;
+        
+        return answerCnt;
     }
     
-    public void dfs(int sum, int start) {
-        if (start == numArr.length) {
-            if (sum == tarNum) cnt++;
+    private void dfs(int sum, int startIdx) {
+        // 종료조건 : startIdx가 마지막 인덱스를 초과했을때
+        if (startIdx == arr.length) {
+            // System.out.println(sum + " " + startIdx);
+            if (targetNum == sum) answerCnt++;
             return;
         }
         
-        dfs(sum + numArr[start], start+1);
-        dfs(sum - numArr[start], start+1);
+        // startIdx부터 끝까지 돈다. 대신 플러스와 마이너스를 한번씩 모두 돈다.
+        dfs(sum + arr[startIdx], startIdx+1);
+        dfs(sum - arr[startIdx], startIdx+1);
+        
+        
     }
-    
-//     public int dfs(int index, int current_sum, int[] numbers, int target) {
-//         if (index == numbers.length) {
-//             return (current_sum == target) ? 1 : 0;
-//         }
-        
-//         int add = dfs(index + 1, current_sum + numbers[index], numbers, target);
-//         int subtract = dfs(index + 1, current_sum - numbers[index], numbers, target);
-        
-//         return add+subtract;
-//     }
-    
-//     public int solution(int[] numbers, int target) {
-//         return dfs(0, 0, numbers, target);
-//     }
 }
+
+// 
