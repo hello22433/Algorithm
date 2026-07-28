@@ -1,73 +1,44 @@
 class Solution {
-    static int N;
-    static int[][] computerss;
-    static boolean[] visited;
+    int answer = 0;
+    boolean[] visitedComputer;
+    
     public int solution(int n, int[][] computers) {
-        // 간접적인 네트워크를 직접적인 네트워크로 이어줘야 한다.
-        // computers[0] 1번 컴퓨터에 이어진 컴퓨터들
-        // computers[0][1] 이 1이라면 1번컴퓨터가 2번컴퓨터에 이어진것
-        // 그럼 2번 컴퓨터로 가서, 2번 컴퓨터에 이어진 것을 체크한다.
-        // 만약, 2번컴퓨터에서 이어진 것을 1번 컴퓨터와 이어준다.
-        // 즉, 만약 computers[1][2]이 1이라면 2번 컴퓨터가 3번 컴퓨터에 이어진것이므로
-        // computers[0][2] 를 1로 바꾼다.
-        // 이후 computers[2]에 대해서 또 탐색한다.
-        // computers[2]를 [0][1][2] 탐색하면서 
-        // 즉, 계속해서 파고들어야 하므로 dfs를 활용한다.
-        // 파고들다가 끝까지 탐색했는데 더이상 1인 게 없으면, 종료한다.
-        // 
-        // 
-        N = n;
-        computerss = computers;
-        visited = new boolean[N];
+        visitedComputer = new boolean[computers.length];
         
-        int cnt = 0;
-        for (int i = 0; i < N; i++) {
-            if (!visited[i]) {
-                cnt++;
-                visited[i] = true;
-                dfs(i, i);
-            }
+        for (int i = 0; i < computers.length; i++) {
+            dfs(i, false, computers);
         }
-        return cnt;
+        
+        return answer;
     }
     
-    public void dfs(int start, int idx) {
+    private void dfs(int cmpIdx, boolean preRoot, int[][] computers) {
+        // 컴퓨터 순환이 끝났을 때 || 이미 방문한 컴퓨터일 때
+        if (cmpIdx == computers.length || visitedComputer[cmpIdx]) {
+            return;
+        }
         
-        for (int i = 0; i < N; i++) {
-            if (computerss[idx][i] == 1 && !visited[i]) {
-                visited[i] = true;
-                computerss[start][i] = 1;
-                dfs(start, i);
+        // 순회하되, 이전 루트가 있으면 answer++안함.
+        if (!preRoot) {
+            answer++;
+        }
+        visitedComputer[cmpIdx] = true;
+        
+        for (int i = 0; i < computers[cmpIdx].length; i++) {
+            if (computers[cmpIdx][i] == 1 && i != cmpIdx) {
+                dfs(i, true, computers);
             }
         }
+        
+        
+        
     }
-    
-//     public int solution(int n, int[][] computers) {
-//         int network = 0;
-//         boolean[] visited = new boolean[n];
-        
-//         for (int i = 0; i < computers.length; i++) {
-//             if (!visited[i]) {
-//                 dfs(i, computers, visited);
-//                 network += 1;
-//             }
-//         }
-//         return network;
-//     }
-    
-//     public void dfs(int node, int[][] computers, boolean[] visited) {
-//         visited[node] = true;
-        
-//         for (int i = 1; i < computers[node].length; i++) {
-//             if (computers[node][i] == 1 && !visited[i]) {
-//                 dfs(i, computers, visited);
-//             }
-//         }
-        
-//     }
 }
 
-// 각각의 노드를 만들어서 연결시키면 될까?
-// 모든 노드에 대한 연결 => DFS. 
-// '하나의 컴퓨터'에 대해서 DFS -> 연결된 컴퓨터들의 '방문의 여부'를 지속적으로 탐구 -> 
-// 연결되어있으면 방문했으로 상태변경.
+// 01 -> 12 -> 23 24.. 방문했는지 안했는지 체크해나가면 될 것 같다. 
+// 방문을 안했다면 무조건 네트워크 수가 증가한다고 보기는 어렵다. 이전 루트가 있었는지의 여부가 중요하다.
+// 루트가 없었으면 해당 노드가 시작점이므로 네트워크수+1
+// 
+// 컴퓨터를 순회하여 방문한다
+// 하나의 컴퓨터를 순회할때 그 컴퓨터 자체에 대한 방문 여부를 체크하면 된다.
+// 
