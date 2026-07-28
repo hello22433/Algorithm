@@ -2,31 +2,25 @@ import java.util.*;
 
 class Solution {
     public int[] solution(int[] array, int[][] commands) {
+        int[] answer = new int[commands.length];
         
         
-        int[] result = new int[commands.length];
-        int resultIdx = 0;
-        for (int a = 0; a < commands.length; a++) {
-            int[] command = commands[a];
+        for (int i = 0; i < commands.length; i++) {
+            int[] cmd = commands[i];
+            int startIdx = cmd[0]-1;
+            int endIdx = cmd[1]-1;
+            int cuttedSelectedIdx = cmd[2] - 1;
             
-            int s = command[0] - 1;
-            int e = command[1] - 1;
-            int k = command[2] - 1;
-            
-            int[] bucket = new int[e-s+1];
-            int bucketIdx = 0;
-            for (int i = s; i <= e; i++) {
-                bucket[bucketIdx++] = array[i];
+            // 잘라서 새로운 객체를 만들고 정렬해서 고른다.
+            int[] newArr = new int[endIdx-startIdx+1];
+            for (int j = 0; j < newArr.length; j++) {
+                newArr[j] = array[startIdx + j];
             }
             
-            Arrays.sort(bucket);
-            
-            result[resultIdx++] = bucket[k];
+            Arrays.sort(newArr);
+            answer[i] = newArr[cuttedSelectedIdx];
         }
         
-        return result;
+        return answer;
     }
 }
-
-// array 의 i ~ j(1based) 자르고 -> 정렬 -> k 번째 수
-// 
