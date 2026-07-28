@@ -1,3 +1,5 @@
+import java.util.*;
+
 class Solution {
     int answer = 0;
     boolean[] visitedComputer;
@@ -6,33 +8,50 @@ class Solution {
         visitedComputer = new boolean[computers.length];
         
         for (int i = 0; i < computers.length; i++) {
-            dfs(i, false, computers);
+            if (!visitedComputer[i]) {
+                answer++;
+                // dfs(i, computers);
+                bfs(i, computers);
+            }
         }
         
         return answer;
     }
     
-    private void dfs(int cmpIdx, boolean preRoot, int[][] computers) {
-        // 컴퓨터 순환이 끝났을 때 || 이미 방문한 컴퓨터일 때
-        if (cmpIdx == computers.length || visitedComputer[cmpIdx]) {
-            return;
-        }
+    private void bfs(int cmpIdx, int[][] computers) {
         
-        // 순회하되, 이전 루트가 있으면 answer++안함.
-        if (!preRoot) {
-            answer++;
-        }
+        Deque<Integer> q = new ArrayDeque<>(); 
+        q.offer(cmpIdx);
         visitedComputer[cmpIdx] = true;
         
-        for (int i = 0; i < computers[cmpIdx].length; i++) {
-            if (computers[cmpIdx][i] == 1 && i != cmpIdx) {
-                dfs(i, true, computers);
+        while (!q.isEmpty()) {
+            
+            int curCmpIdx = q.poll();
+            
+            for (int i = 0; i < computers[curCmpIdx].length; i++) {
+                if (computers[curCmpIdx][i] == 1 && !visitedComputer[i]) {
+                    visitedComputer[i] = true;
+                    q.offer(i);
+                }
             }
         }
-        
-        
-        
     }
+    
+//     private void dfs(int cmpIdx, int[][] computers) {
+//         // 컴퓨터 순환이 끝났을 때 || 이미 방문한 컴퓨터일 때
+//         if (visitedComputer[cmpIdx]) {
+//             return;
+//         }
+        
+//         // 순회하되, 이전 루트가 있으면 answer++안함.
+//         visitedComputer[cmpIdx] = true;
+        
+//         for (int i = 0; i < computers[cmpIdx].length; i++) {
+//             if (computers[cmpIdx][i] == 1 && i != cmpIdx) {
+//                 dfs(i, computers);
+//             }
+//         }
+//     }
 }
 
 // 01 -> 12 -> 23 24.. 방문했는지 안했는지 체크해나가면 될 것 같다. 
