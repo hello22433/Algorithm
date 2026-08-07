@@ -1,5 +1,5 @@
 -- 코드를 입력하세요
-SELECT BOOK_ID, DATE_FORMAT(PUBLISHED_DATE, '%Y-%m-%d') AS PUBLISHED_DATE
-from BOOK
-where PUBLISHED_DATE LIKE '2021%' AND CATEGORY = '인문'
-order by PUBLISHED_DATE;
+SELECT book_id, published_date
+from book
+where published_date between '2021-01-01' and '2021-12-31' and category = '인문'
+order by published_date asc;
