@@ -1,0 +1,5 @@
+-- 코드를 입력하세요
+SELECT member_id, member_name, gender, date_of_birth
+from member_profile
+where date_of_birth LIKE '%-03-%' and tlno is not null and gender = 'W'
+order by member_id ASC;
