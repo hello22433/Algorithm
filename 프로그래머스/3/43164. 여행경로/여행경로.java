@@ -1,62 +1,50 @@
 import java.util.*;
 
 class Solution {
-    static boolean[] visited;
-    static String[][] ticketss;
+    
+    List<String> path = new ArrayList<>();
+    boolean[] visited;
     
     public String[] solution(String[][] tickets) {
+        
+        visited = new boolean[tickets.length];
         Arrays.sort(tickets, (a,b) -> {
-            if (a[0].equals(b[0]))
+            if (a[0].equals(b[0])) {
                 return a[1].compareTo(b[1]);
+            }
             return a[0].compareTo(b[0]);
         });
         
-        visited = new boolean[tickets.length];
-        ticketss = tickets;
+        path.add("ICN");
+        dfs(tickets, 0);
         
-        for (int i = 0; i < ticketss.length; i++) {
-            if (ticketss[i][0].equals("ICN")) {
-                visited[i] = true;
-                String[] bucket = new String[2];
-                bucket[0] = ticketss[i][0];
-                bucket[1] = ticketss[i][1];
-                String[] result = dfs(bucket);
-                visited[i] = false;
-                
-                if (result.length == ticketss.length + 1)
-                    return result;
-            }
-        }
-        
-        return new String[]{"0"};
+        return path.toArray(new String[0]);
     }
     
-    public String[] dfs(String[] bucket) {
-        if (bucket.length == ticketss.length + 1) {
-            return bucket;
+    private boolean dfs(String[][] tickets, int cnt) {
+        if (cnt == tickets.length) {
+            return true;
         }
         
-        for (int i = 0; i < ticketss.length; i++) {
-            if (ticketss[i][0].equals(bucket[bucket.length-1]) && !visited[i]) {
+        // 
+        for (int i = 0; i < tickets.length; i++) {
+            if (!visited[i] && path.get(path.size()-1).equals(tickets[i][0])) {
                 visited[i] = true;
-                String[] newBucket = new String[bucket.length + 1];
-                for (int a = 0; a < bucket.length; a++) {
-                    newBucket[a] = bucket[a];
-                }
-                newBucket[newBucket.length-1] = ticketss[i][1];
                 
-                String[] result = dfs(newBucket);
-                if (result.length == ticketss.length + 1) return result;
+                path.add(tickets[i][1]);
 
-                visited[i] = false;  // 백트래킹 수행
+                if (dfs(tickets, cnt+1)) {
+                    return true;
+                }
+
+                path.remove(path.size()-1);
+                visited[i] = false;
             }
+            
         }
-        
-        return new String[]{};
+        return false;
     }
 }
 
-
-// ICN 공항에서 출발
-// 항공권 정보가 담긴 2차원 배열 tickets 
-// 
+// 모든 경우의 수를 따져봐야한다
+// 백트래킹으로 티켓을 모두 쓰는 경우를 찾아나간다.
